@@ -1,0 +1,6 @@
+.formulario{
+    width:800px !important;
+    display:flex;
+    flex-direction:column;
+    margin-left:35%;
+}
