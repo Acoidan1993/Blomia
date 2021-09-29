@@ -106,6 +106,10 @@ import "./Formulario.css";
       <input type="number" placeholder="Stock" onChange={gestorStock} required className="form-control"/>
       <label for="CheckBox">Marcar si la planta esta Activa</label>
       <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo}/>
+      {/* <input type="number" placeholder="Lista 1"/>
+      <input type="text" placeholder="Lista 2" />
+      <input type="text" placeholder="Lista 3" />
+      <input type="text" placeholder="Lista 4" /> Implementar las listas de precios--------------------------------------------------------------------- */}
       <input type="text" placeholder="Tipo" onChange={gestorTipo} required className="form-control"/>
       {/* falta input listaPrecio */}
       <input type="submit" className="btn btn-success" onClick={success}></input>

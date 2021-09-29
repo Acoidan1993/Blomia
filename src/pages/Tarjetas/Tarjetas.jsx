@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 
 function Tarjetas(props) {
-    const listaPlantas = props.listaPlantas;
+    const lista = props.listaPlantas;
+    console.log(lista)
     const eliminar = props.eliminar;
     const modificar = props.modificar;
 
@@ -15,7 +16,7 @@ function Tarjetas(props) {
   // ----------------------------Gesor Borrar---------------------------------
 
     const borrarPlanta = () => {
-        eliminar(listaPlantas.id);
+        eliminar(lista.id);
     };
 
   // ----------------------------Gestor Editar---------------------------------  
@@ -31,15 +32,15 @@ function Tarjetas(props) {
         }
       
         const modificaPlanta = {
-          id: listaPlantas.id,
-        //   Imagen: listaPlantas.Imagen, descomentar cuando este implementado
-          Nombre: listaPlantas.Nombre,
-          Referencia: listaPlantas.Referencia,
-          Tamaño: listaPlantas.Tamaño,
-          Stock: listaPlantas.Stock,
-          Activo: listaPlantas.Activo,
-          Tipo: listaPlantas.Tipo
-        //   listaPrecios: listaPlantas.listaPrecios, poner la coma en el anterior al descomentar esto
+          id: lista.id,
+        //   Imagen: lista.Imagen, descomentar cuando este implementado
+          Nombre: lista.Nombre,
+          Referencia: lista.Referencia,
+          Tamaño: lista.Tamaño,
+          Stock: lista.Stock,
+          Activo: lista.Activo,
+          Tipo: lista.Tipo
+        //   listaPrecios: lista.listaPrecios, poner la coma en el anterior al descomentar esto
         };
       
         modificar(modificaPlanta);
@@ -55,19 +56,19 @@ function Tarjetas(props) {
 
   return (
     <div className="datos">
-            <div key={listaPlantas.id} id="tarjeta">
+            <div key={lista.id} id="tarjeta">
                 <div>
-                <p>{listaPlantas.Imagen}</p>
-                <h3 id="nombre">{listaPlantas.Nombre}
+                <p>{lista.Imagen}</p>
+                <h3 id="nombre">{lista.Nombre}
                 <button type="submit" id="borrar"onClick={borrarPlanta}>Eliminar Artículo</button>
                 </h3>
                 </div>
-                <h4>{listaPlantas.Referencia}</h4>
-                <p>{listaPlantas.Tamaño}</p>
-                <p>{listaPlantas.Stock}</p>
-                <p>{listaPlantas.Activo}</p>
-                <p>{listaPlantas.Tipo}</p>
-                <p>{listaPlantas.ListaPrecios}</p>
+                <h4>{lista.Referencia}</h4>
+                <p>{lista.Tamaño}</p>
+                <p>{lista.Stock}</p>
+                <p>{lista.Activo}</p>
+                <p>{lista.Tipo}</p>
+                <p>{lista.ListaPrecios}</p>
     
                 <div key={modificar.id} id="gestoredit">
                     {error ? (<div className="divError">

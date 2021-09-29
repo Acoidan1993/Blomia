@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { useState, useEffect } from "react";
 import Header from "./pages/Header/Header.jsx"
 import Formulario from './pages/Formulario/Formulario.jsx';
@@ -35,7 +35,7 @@ function App() {
 
   // ----------------------------Get Principal---------------------------------
 
-  const url = 'http://localhost:5000/api/blomia/plantas';
+  const url = 'https://blomia.herokuapp.com/plantas/todas';
   const [newResultado, setResultado] = useState([])
   
   const recuperaDatos = async () => {
@@ -57,7 +57,7 @@ function App() {
   // ----------------------------Get Busqueda---------------------------------
 
 
-  const urlBuscar = 'http://localhost:5000/api/blomia/plantas';
+  const urlBuscar = 'https://blomia.herokuapp.com/plantas/todas';
   
   const [planta, setPlanta] = useState('');
 
@@ -67,16 +67,16 @@ function App() {
   const buscaDatos = async () => {
     try {
       let resp = await fetch(urlBuscar);
-      let resu = await resp.json();
-      const busqueda = resu.filter((element) =>{
+      let resultados = await resp.json();
+      const busqueda = resultados.filter((element) =>{
         return element.nombre === planta;
       })
       if(planta === ""){
-      setResultado(resu)
-      return resu;
+      setResultado(resultados)
+      return resultados;
     } else{
       setResultado(busqueda)
-      return resu;
+      return resultados;
     }
     } catch (error) {
       console.log(error)
@@ -122,7 +122,7 @@ function App() {
         redirect: 'follow'
     };
 
-    await fetch("http://localhost:5000/api/blomia/plantas", requestOptions)
+    await fetch("https://blomia.herokuapp.com/plantas", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
