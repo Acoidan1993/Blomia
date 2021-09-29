@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Formulario.css";
 
 
@@ -79,19 +81,44 @@ import "./Formulario.css";
 
     console.log(error)
   }
+
+    const success = () => 
+    toast.success('PLANTA CREADA CON EXITO', {
+        position: "top-center",
+        type: "success",
+        theme: "colored",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });;
   
   return (
-    <form onSubmit={submit} className="formulario">
+    <form onSubmit={submit} className="formulario bg-success mb-3" >
+        <h2 className="tituloTarjeta">Crear Nueva Planta</h2>
       <label for="File">Seleccione imagen de planta</label>
-	  <input type="file" id="imageFile" accept="image/*" onChange={gestorImagen} required/>
-      <input type="text" placeholder="Nombre" onChange={gestorNombre} required/>
-      <input type="text" placeholder="Referencia" onChange={gestorReferencia} required/>
-      <input type="text" placeholder="Tamaño" onChange={gestorTamaño} required/>
-      <input type="number" placeholder="Stock" onChange={gestorStock} required/>
-      <label for="CheckBox">Marcar si la planta esta Activa<input type="checkbox" placeholder="Activo" onChange={gestorActivo} required/></label>
-      <input type="text" placeholder="Tipo" onChange={gestorTipo} required/>
+	  <input type="file" id="imageFile" accept="image/*" onChange={gestorImagen} required className="form-control"/>
+      <input type="text" placeholder="Nombre" onChange={gestorNombre} required className="form-control"/>
+      <input type="text" placeholder="Referencia" onChange={gestorReferencia} required className="form-control"/>
+      <input type="text" placeholder="Tamaño" onChange={gestorTamaño} required className="form-control"/>
+      <input type="number" placeholder="Stock" onChange={gestorStock} required className="form-control"/>
+      <label for="CheckBox">Marcar si la planta esta Activa</label>
+      <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo}/>
+      <input type="text" placeholder="Tipo" onChange={gestorTipo} required className="form-control"/>
       {/* falta input listaPrecio */}
-      <input type="submit" />
+      <input type="submit" className="btn btn-success" onClick={success}></input>
+      <ToastContainer 
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover/>
     </form>
   );
 }

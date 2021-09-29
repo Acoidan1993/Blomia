@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Formulario from './pages/Formulario/Formulario';
-import MuestraDatos from './pages/MuestaDatos/MuestraDatos';
-import Registrarse from "./pages/Registrarse/Registrarse";
+import Header from "./pages/Header/Header.jsx"
+import Formulario from './pages/Formulario/Formulario.jsx';
+import MuestraDatos from './pages/MuestaDatos/MuestraDatos.jsx';
+import Registrarse from "./pages/Registrarse/Registrarse.jsx";
 import Login from "./pages/Login/Login.jsx";
 import './App.css';
 
@@ -194,6 +195,9 @@ function App() {
     <div className = "App" >
       	<Router>
 					<Switch>
+              <Route>
+                <Header />
+              </Route>
 						<Route exact path="/Blomia/">
 							<Login gestionarAcceso={gestionarAcceso} />
 						</Route>
