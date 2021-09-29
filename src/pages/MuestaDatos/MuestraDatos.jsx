@@ -4,6 +4,7 @@ import Tarjetas from "../Tarjetas/Tarjetas.jsx";
 
 function MuestraDatos(props) {
     const listaPlantas = props.listaPlantas;
+    console.log(listaPlantas)
     const eliminaP = props.eliminaP;
     const modificarP = props.modificarP;
     

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function Tarjetas(props) {
     const lista = props.listaPlantas;
-    console.log(lista)
+    // console.log(lista)
     const eliminar = props.eliminar;
     const modificar = props.modificar;
 

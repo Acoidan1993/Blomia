@@ -37,13 +37,14 @@ function App() {
 
   const url = 'https://blomia.herokuapp.com/plantas/todas';
   const [newResultado, setResultado] = useState([])
+  console.log(newResultado)
   
   const recuperaDatos = async () => {
     try {
       let respuesta = await fetch(url);
       let resultado = await respuesta.json();
-      setResultado(resultado)
-      return(resultado)
+      setResultado(resultado.respuesta)
+      // return(resultado.respuesta)
     } catch (error) {
       console.log(error)
     }
@@ -205,9 +206,10 @@ function App() {
 							<Registrarse gestionarAcceso={gestionarAcceso} />
             </Route>
 					</Switch>
-				</Router>
-    <MuestraDatos listaPlantas = {newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>
-    <Formulario añadirPlanta={añadirPlanta}/>
+				</Router>    
+        <Formulario añadirPlanta={añadirPlanta}/>
+        <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>
+
     </div>
   );
 }
