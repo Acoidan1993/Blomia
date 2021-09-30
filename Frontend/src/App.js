@@ -6,6 +6,10 @@ import Formulario from './pages/Formulario/Formulario.jsx';
 import MuestraDatos from './pages/MuestaDatos/MuestraDatos.jsx';
 import Registrarse from "./pages/Registrarse/Registrarse.jsx";
 import Login from "./pages/Login/Login.jsx";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
 import './App.css';
 
 
@@ -35,9 +39,8 @@ function App() {
 
   // ----------------------------Get Principal---------------------------------
 
-  const url = 'https://blomia.herokuapp.com/plantas/todas';
-  const [newResultado, setResultado] = useState([])
-  console.log(newResultado)
+  const url = 'https://blomia.herokuapp.com/plantas';
+  const [newResultado, setResultado] = useState([]);
   
   const recuperaDatos = async () => {
     try {
@@ -58,7 +61,7 @@ function App() {
   // ----------------------------Get Busqueda---------------------------------
 
 
-  const urlBuscar = 'https://blomia.herokuapp.com/plantas/todas';
+  const urlBuscar = 'https://blomia.herokuapp.com/plantas';
   
   const [planta, setPlanta] = useState('');
 
@@ -67,17 +70,17 @@ function App() {
   }
   const buscaDatos = async () => {
     try {
-      let resp = await fetch(urlBuscar);
-      let resultados = await resp.json();
-      const busqueda = resultados.filter((element) =>{
-        return element.nombre === planta;
+      let respuesta = await fetch(urlBuscar);
+      let resultado = await respuesta.json();
+      const busqueda = resultado.filter((element) =>{
+        return element.Nombre === planta;
       })
       if(planta === ""){
-      setResultado(resultados)
-      return resultados;
+      setPlanta(resultado)
+      return resultado;
     } else{
-      setResultado(busqueda)
-      return resultados;
+      setPlanta(busqueda)
+      return resultado;
     }
     } catch (error) {
       console.log(error)
@@ -105,14 +108,14 @@ function App() {
     myHeaders.append("Content-Type", "application/json");
 
     let raw = JSON.stringify({
-        // "Imagen": planta.imagen,
-        "Nombre": planta.nombre,
-        "Referencia": planta.referencia,
-        "Tamaño": planta.tamaño,
-        "Stock": planta.stock,
-        "Activo": planta.activo,
-        "Tipo": planta.tipo,
-        "Precio": planta.Precio
+        "Nombre": planta.Nombre,
+        "Referencia": planta.Referencia,
+        "Tamaño": planta.Tamaño,
+        "Stock": planta.Stock,
+        "Activo": planta.Activo,
+        "Tipo": planta.Tipo, 
+        "Precio": planta.Precio,
+        "Foto": planta.Foto
     });
 
     console.log(raw);
@@ -133,13 +136,13 @@ function App() {
 
   // ----------------------------Get Eliminar---------------------------------
 
-  const eliminarPlanta = async (id) => {
+  const eliminarPlanta = async (_id) => {
     var requestOptions = {
       method: "DELETE",
       redirect: "follow",
     };
 
-    await fetch(`http://localhost:5000/api/blomia/plantas/${id}`, requestOptions)
+    await fetch(`https://blomia.herokuapp.com/plantas/eliminar/${_id}}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
@@ -147,35 +150,36 @@ function App() {
     recuperaDatos();
   };
 
+
   // ----------------------------Funcion Modificar---------------------------------
 
 
-  const modificarPlanta = async (plantas) => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  const modificarPlanta = async (planta) => {
+    // var myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({
-      Imagen: planta.imagen,
-      Nombre: planta.nombre,
-      Referencia: planta.referencia,
-      Tamaño: planta.tamaño,
-      Stock: planta.stock,
-      Activo: planta.activo,
-      Tipo: planta.tipo,
-      listaPrecio: planta.listaPrecio
-    });
+    // var raw = JSON.stringify({
+    //   Foto: planta.Foto,
+    //   Nombre: planta.Nombre,
+    //   Referencia: planta.Referencia,
+    //   Tamaño: planta.Tamaño,
+    //   Stock: planta.Stock,
+    //   Activo: planta.Activo,
+    //   Tipo: planta.Tipo,
+    //   Precio: planta.Precio
+    // });
 
-    var requestOptions = {
-      method: "PUT",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
+    // var requestOptions = {
+    //   method: "PUT",
+    //   headers: myHeaders,
+    //   body: raw,
+    //   redirect: "follow",
+    // };
 
-    await fetch(`http://localhost:5000/api/blomia/plantas/${plantas.id}`, requestOptions)
-      .then((response) => response.text())
-      .catch((error) => console.log("error", error));
-      recuperaDatos();
+    // await fetch(`http://localhost:5000/api/blomia/plantas/${planta._id}`, requestOptions)
+    //   .then((response) => response.text())
+    //   .catch((error) => console.log("error", error));
+    //   recuperaDatos();
   };
   
 
@@ -208,6 +212,26 @@ function App() {
 					</Switch>
 				</Router>              
         <Formulario añadirPlanta={añadirPlanta}/>
+        <div id='inicio'>
+        <Stack spacing={2} sx={{ width: 300 }}>
+      <Autocomplete
+        freeSolo
+        id="busqueda"
+        disableClearable
+        options={newResultado.map((option) => option.Nombre)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Buscar Planta"
+            InputProps={{
+              ...params.InputProps,
+              type: 'search',
+            }}
+          />
+        )}
+      />
+    </Stack>
+        </div>
         <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>  
     </div>
   );

@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Formulario.css";
 
@@ -11,7 +14,7 @@ import "./Formulario.css";
   const [error, setError] = useState("");
 
 
-//   const [Imagen, setImagen] = useState("")
+  const [Foto, setFoto] = useState("")
   const [Nombre, setNombre] = useState("");
   const [Referencia, setReferencia] = useState("");
   const [Tamaño, setTamaño] = useState("");
@@ -20,9 +23,10 @@ import "./Formulario.css";
   const [Tipo, setTipo] = useState("");
   const [Precio, setPrecio] = useState("");
 
-    // const gestorImagen = (e)=>{
-    //     setImagen(e.target.value);
-    // }
+
+    const gestorFoto = (e)=>{
+        setFoto(e.target.value);
+    }
     const gestorNombre = (e)=>{
         setNombre(e.target.value);
     }
@@ -50,15 +54,16 @@ import "./Formulario.css";
   const submit = (e)=>{
       e.preventDefault();
       setError(false);
-        // Imagen === ""||
+        
 
-      if(Nombre === ""||Referencia === ""|| Tamaño === ""|| Stock === ""|| Activo === ""|| Tipo === ""|| Precio === ""){
+      if(Foto === ""|| Nombre === ""|| Referencia === ""|| Tamaño === ""|| Stock === ""|| Tipo === ""|| Precio === ""){
         setError(true);
+        console.log("hay error")
         return;
     }
 
     const plantas = {
-        // Imagen: Imagen,
+        Foto: Foto,
         Nombre: Nombre,
         Referencia: Referencia,
         Tamaño: Tamaño,
@@ -69,17 +74,19 @@ import "./Formulario.css";
     }
     añadirPlanta(plantas);
 
-    // setImagen("");
+    setFoto("");
     setNombre("");
     setReferencia("");
     setTamaño("");
     setStock("");
     setActivo("");
     setTipo("");
-    Precio("");
+    setPrecio("");
 
     console.log(error)
   }
+  
+
 
     const success = () => 
     toast.success('PLANTA CREADA CON EXITO', {
@@ -96,27 +103,27 @@ import "./Formulario.css";
   
   return (
       <div className="cuerpo">
-    <form onSubmit={submit} className="formulario bg-success mb-3" >
+          {error ? (<div className="divError">
+            <p className="mensajeError">Debe completar todos los campos</p>
+          </div>) : null}
+      <form type="" onSubmit={submit} encType="multipart/form-data" className="formulario bg-success mb-3" >
         <h2 className="tituloTarjeta">Crear Nueva Planta</h2>
       <label for="File">Seleccione imagen de planta</label>
-	  {/* <input type="file" id="imageFile" accept="image/*" onChange={gestorImagen} required className="form-control"/> */}
-      <input type="text" placeholder="Nombre" onChange={gestorNombre} required className="form-control"/>
-      <input type="text" placeholder="Referencia" onChange={gestorReferencia} required className="form-control"/>
-      <input type="text" placeholder="Tamaño" onChange={gestorTamaño} required className="form-control"/>
-      <input type="number" placeholder="Stock" onChange={gestorStock} required className="form-control"/>
+	    <input type="text" id="imageFile"accept="image/*" onChange={gestorFoto} value={Foto} required className="form-control"/>
+      <input type="text" placeholder="Nombre" onChange={gestorNombre} value={Nombre} required className="form-control"/>
+      <input type="text" placeholder="Referencia" onChange={gestorReferencia} value={Referencia} required className="form-control"/>
+      <input type="text" placeholder="Tamaño" onChange={gestorTamaño} value={Tamaño}required className="form-control"/>
+      <input type="number" placeholder="Stock" onChange={gestorStock} value={Stock} required className="form-control"/>
       <label for="CheckBox">Marcar si la planta esta Activa</label>
-      <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo}/>
+      <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} value={Activo}/>
 
       {/* este input precio es de prueba--------------------------------------------------------------- */}
-      <input type="number" placeholder="Precio" onChange={gestorPrecio} required className="form-control"/>
-
-      {/* <input type="number" placeholder="Lista 1"/>
-      <input type="text" placeholder="Lista 2" />
-      <input type="text" placeholder="Lista 3" />
-      <input type="text" placeholder="Lista 4" /> Implementar las listas de precios--------------------------------------------------------------------- */}
-      <input type="text" placeholder="Tipo" onChange={gestorTipo} required className="form-control"/>
-      {/* falta input listaPrecio */}
-      <input type="submit" className="btn btn-success" onClick={success}></input>
+      <input type="text" placeholder="Tipo" onChange={gestorTipo} value={Tipo} required className="form-control"/>
+      <input type="number" placeholder="Precio" step="0.01" onChange={gestorPrecio} value={Precio} required className="form-control"/>
+      
+      <button type="submit" className="btn btn-success" onClick={success}>ENVIAR</button>
+    </form>  
+    <div>    
       <ToastContainer 
       position="top-center"
       autoClose={3000}
@@ -127,7 +134,7 @@ import "./Formulario.css";
       pauseOnFocusLoss
       draggable
       pauseOnHover/>
-    </form>
+      </div>    
     </div>
   );
 }

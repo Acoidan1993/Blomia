@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 function Tarjetas(props) {
     const lista = props.listaPlantas;
-    // console.log(lista)
     const eliminar = props.eliminar;
     const modificar = props.modificar;
     
@@ -15,7 +14,8 @@ function Tarjetas(props) {
   // ----------------------------Gestor Borrar---------------------------------
 
     const borrarPlanta = () => {
-        eliminar(lista.id);
+        eliminar(lista._id);
+        console.log(lista._id)
     };
 
   // ----------------------------Gestor Editar---------------------------------  
@@ -31,15 +31,15 @@ function Tarjetas(props) {
         }
       
         const modificaPlanta = {
-          id: lista.id,
-        //   Imagen: lista.Imagen, descomentar cuando este implementado
+          id: lista._id,
+        //   Foto: lista.Foto, descomentar cuando este implementado
           Nombre: lista.Nombre,
           Referencia: lista.Referencia,
           Tamaño: lista.Tamaño,
           Stock: lista.Stock,
           Activo: lista.Activo,
           Tipo: lista.Tipo
-        //   listaPrecios: lista.listaPrecios, poner la coma en el anterior al descomentar esto
+        //   Precio: lista.Precio, poner la coma en el anterior al descomentar esto
         };
       
         modificar(modificaPlanta);
@@ -55,7 +55,7 @@ function Tarjetas(props) {
 
   return (
     <div className="card text-white bg-primary mb-3">
-            <div key={lista.id} id="tarjeta">
+            <div key={lista._id} id="tarjeta">
               <div className="eliminar">
               <button type="submit" id="borrar" onClick={borrarPlanta} className="fas fa-times btn btn-danger"></button>
               </div>

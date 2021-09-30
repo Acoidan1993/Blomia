@@ -4,8 +4,7 @@ import Tarjetas from "../Tarjetas/Tarjetas.jsx";
 
 function MuestraDatos(props) {
     const listaPlantas = props.listaPlantas;
-    console.log(listaPlantas)
-    const eliminaP = props.eliminaP;
+    const eliminaP = props.eliminarP;
     const modificarP = props.modificarP;
     
 
@@ -14,7 +13,7 @@ function MuestraDatos(props) {
     <div className="contenido">
       {listaPlantas.map((e)=>{
           return(
-              <Tarjetas key={e.id} listaPlantas={e} eliminar={eliminaP} modificar={modificarP}/>
+              <Tarjetas key={e._id} listaPlantas={e} eliminar={eliminaP} modificar={modificarP}/>
           )
       })}
     </div>
