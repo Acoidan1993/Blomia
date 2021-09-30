@@ -7,13 +7,12 @@ function Tarjetas(props) {
     // console.log(lista)
     const eliminar = props.eliminar;
     const modificar = props.modificar;
-
     
     const [modifica, setModifica] = useState("");
     const [error, setError] = useState("");
 
 
-  // ----------------------------Gesor Borrar---------------------------------
+  // ----------------------------Gestor Borrar---------------------------------
 
     const borrarPlanta = () => {
         eliminar(lista.id);
@@ -55,30 +54,30 @@ function Tarjetas(props) {
 
 
   return (
-    <div className="datos">
+    <div className="card text-white bg-primary mb-3">
             <div key={lista.id} id="tarjeta">
+              <div className="eliminar">
+              <button type="submit" id="borrar" onClick={borrarPlanta} className="fas fa-times btn btn-danger"></button>
+              </div>
                 <div>
-                <p>{lista.Imagen}</p>
-                <h3 id="nombre">{lista.Nombre}
-                <button type="submit" id="borrar"onClick={borrarPlanta}>Eliminar Artículo</button>
-                </h3>
+                <p>{lista.Foto}</p>
+                <h2 id="nombre"><strong>{lista.Nombre}</strong></h2>
                 </div>
-                <h4>{lista.Referencia}</h4>
-                <p>{lista.Tamaño}</p>
-                <p>{lista.Stock}</p>
-                <p>{lista.Activo}</p>
-                <p>{lista.Tipo}</p>
-                <p>{lista.ListaPrecios}</p>
-    
-                <div key={modificar.id} id="gestoredit">
-                    {error ? (<div className="divError">
+                <h4><strong>Referencia: </strong>{lista.Referencia}</h4>
+                <p><strong>Tamaño: </strong>{lista.Tamaño}</p>
+                <p><strong>Stock: </strong>{lista.Stock}</p>
+                <p><strong>Activo: </strong>{lista.Activo}</p>
+                <p><strong>Tipo: </strong>{lista.Tipo}</p>
+                <p><strong>Precio: </strong>{lista.Precio}</p>
+            </div>                
+            <div key={modificar.id} id="gestoredit">
+                    {/* {error ? (<div className="divError">
                     <p className="mensajeError">Debe completar todos los campos</p>
-                    </div>) : null}
+                    </div>) : null} */}
                     <form action="" onSubmit={gestorEdit} encType="multipart/form-data" id="formularioedit">
-                        <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos" value={modifica} className="form-control me-sm-2"></input>
-                        <button type="submit" id="editar">Editar Campos</button> 
+                        {/* <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos" value={modifica} className="form-control me-sm-2"></input> */}
+                        <button type="submit" id="editar" className="btn btn-warning">Editar Campos</button> 
                     </form>
-                </div>
             </div>
     </div>
   );

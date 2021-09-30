@@ -1,3 +1,33 @@
-.datos{
-    align-items: left;
+#editar{
+    width: 50% !important;
 }
+
+.gestoredit{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#formularioedit{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px;
+    border-radius: 15px;
+}
+
+.eliminar{
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+#borrar{
+    width: 15% !important;
+    font-size: 16px;
+    margin-left: 20%;
+    border-radius: 15px;
+}
+
+#tarjeta{
+    width: 350px !important;
+    height: 400px !important;
+}
+

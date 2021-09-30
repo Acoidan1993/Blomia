@@ -10,12 +10,14 @@ function MuestraDatos(props) {
     
 
   return (
-    <div className="">
+    <div className="juntar">
+    <div className="contenido">
       {listaPlantas.map((e)=>{
           return(
               <Tarjetas key={e.id} listaPlantas={e} eliminar={eliminaP} modificar={modificarP}/>
           )
       })}
+    </div>
     </div>
   );
 }

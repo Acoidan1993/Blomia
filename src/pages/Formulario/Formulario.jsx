@@ -11,18 +11,18 @@ import "./Formulario.css";
   const [error, setError] = useState("");
 
 
-  const [Imagen, setImagen] = useState("")
+//   const [Imagen, setImagen] = useState("")
   const [Nombre, setNombre] = useState("");
   const [Referencia, setReferencia] = useState("");
   const [Tamaño, setTamaño] = useState("");
   const [Stock, setStock] = useState("");
   const [Activo, setActivo] = useState("");
   const [Tipo, setTipo] = useState("");
-//   const [ListaPrecio, setListaPrecio] = useState("");
+  const [Precio, setPrecio] = useState("");
 
-    const gestorImagen = (e)=>{
-        setImagen(e.target.value);
-    }
+    // const gestorImagen = (e)=>{
+    //     setImagen(e.target.value);
+    // }
     const gestorNombre = (e)=>{
         setNombre(e.target.value);
     }
@@ -41,43 +41,42 @@ import "./Formulario.css";
     const gestorTipo = (e)=>{
         setTipo(e.target.value);
     }
-    // const gestorListaPrecio = (e)=>{
-    //     setListaPrecio(e.target.value);
-    // }
+    const gestorPrecio = (e)=>{
+        setPrecio(e.target.value);
+    }
 
   // ----------------------------Funcion Submit---------------------------------
 
   const submit = (e)=>{
       e.preventDefault();
       setError(false);
+        // Imagen === ""||
 
-// || ListaPrecio === "" añadir esto abajo
-
-      if(Imagen === ""||Nombre === ""||Referencia === ""|| Tamaño === ""|| Stock === ""|| Activo === ""|| Tipo === ""){
+      if(Nombre === ""||Referencia === ""|| Tamaño === ""|| Stock === ""|| Activo === ""|| Tipo === ""|| Precio === ""){
         setError(true);
         return;
     }
 
     const plantas = {
-        Imagen: Imagen,
+        // Imagen: Imagen,
         Nombre: Nombre,
         Referencia: Referencia,
         Tamaño: Tamaño,
         Stock: Stock,
         Activo: Activo,
         Tipo: Tipo,
-        // ListaPrecio: ListaPrecio,
+        Precio: Precio,
     }
     añadirPlanta(plantas);
 
-    setImagen("");
+    // setImagen("");
     setNombre("");
     setReferencia("");
     setTamaño("");
     setStock("");
     setActivo("");
     setTipo("");
-    // setListaPrecio("");
+    Precio("");
 
     console.log(error)
   }
@@ -96,16 +95,21 @@ import "./Formulario.css";
         });;
   
   return (
+      <div className="cuerpo">
     <form onSubmit={submit} className="formulario bg-success mb-3" >
         <h2 className="tituloTarjeta">Crear Nueva Planta</h2>
       <label for="File">Seleccione imagen de planta</label>
-	  <input type="file" id="imageFile" accept="image/*" onChange={gestorImagen} required className="form-control"/>
+	  {/* <input type="file" id="imageFile" accept="image/*" onChange={gestorImagen} required className="form-control"/> */}
       <input type="text" placeholder="Nombre" onChange={gestorNombre} required className="form-control"/>
       <input type="text" placeholder="Referencia" onChange={gestorReferencia} required className="form-control"/>
       <input type="text" placeholder="Tamaño" onChange={gestorTamaño} required className="form-control"/>
       <input type="number" placeholder="Stock" onChange={gestorStock} required className="form-control"/>
       <label for="CheckBox">Marcar si la planta esta Activa</label>
       <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo}/>
+
+      {/* este input precio es de prueba--------------------------------------------------------------- */}
+      <input type="number" placeholder="Precio" onChange={gestorPrecio} required className="form-control"/>
+
       {/* <input type="number" placeholder="Lista 1"/>
       <input type="text" placeholder="Lista 2" />
       <input type="text" placeholder="Lista 3" />
@@ -124,6 +128,7 @@ import "./Formulario.css";
       draggable
       pauseOnHover/>
     </form>
+    </div>
   );
 }
 

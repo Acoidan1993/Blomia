@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import axios from "axios";
 import { useState, useEffect } from "react";
-import Header from "./pages/Header/Header.jsx"
+import Header from "./pages/Header/Header.jsx";
 import Formulario from './pages/Formulario/Formulario.jsx';
 import MuestraDatos from './pages/MuestaDatos/MuestraDatos.jsx';
 import Registrarse from "./pages/Registrarse/Registrarse.jsx";
@@ -105,14 +105,14 @@ function App() {
     myHeaders.append("Content-Type", "application/json");
 
     let raw = JSON.stringify({
-       "Imagen": planta.imagen,
+        // "Imagen": planta.imagen,
         "Nombre": planta.nombre,
         "Referencia": planta.referencia,
         "Tamaño": planta.tamaño,
         "Stock": planta.stock,
         "Activo": planta.activo,
         "Tipo": planta.tipo,
-        "listaPrecio": planta.listaPrecio
+        "Precio": planta.Precio
     });
 
     console.log(raw);
@@ -199,17 +199,16 @@ function App() {
               <Route>
                 <Header />
               </Route>
-						<Route exact path="/Blomia/">
+						<Route exact path="/blomia/login">
 							<Login gestionarAcceso={gestionarAcceso} />
 						</Route>
-						<Route exact path="/Blomia/alta">
+						<Route exact path="/blomia/alta">
 							<Registrarse gestionarAcceso={gestionarAcceso} />
             </Route>
 					</Switch>
-				</Router>    
+				</Router>              
         <Formulario añadirPlanta={añadirPlanta}/>
-        <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>
-
+        <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>  
     </div>
   );
 }

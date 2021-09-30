@@ -3344,7 +3344,7 @@ textarea.form-control.is-invalid {
     border: 1px solid transparent;
     padding: .375rem .5rem;
     font-size: 1rem;
-    border-radius: 0;
+    border-radius: 8px;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -5359,7 +5359,7 @@ fieldset:disabled .btn {
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 0
+    border-radius: 15px
 }
 
 .card>hr {

@@ -1,0 +1,12 @@
+.contenido{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: auto !important;
+}
+
+.juntar{
+    justify-content: space-around !important;
+}
