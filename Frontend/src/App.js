@@ -39,7 +39,7 @@ function App() {
 
   // ----------------------------Get Principal---------------------------------
 
-  const url = 'https://blomia.herokuapp.com/plantas';
+  const url = 'https://blomiasa.herokuapp.com/plantas';
   const [newResultado, setResultado] = useState([]);
   
   const recuperaDatos = async () => {
@@ -61,7 +61,7 @@ function App() {
   // ----------------------------Get Busqueda---------------------------------
 
 
-  const urlBuscar = 'https://blomia.herokuapp.com/plantas';
+  const urlBuscar = 'https://blomiasa.herokuapp.com/plantas';
   
   const [planta, setPlanta] = useState('');
 
@@ -126,7 +126,7 @@ function App() {
         redirect: 'follow'
     };
 
-    await fetch("https://blomia.herokuapp.com/plantas", requestOptions)
+    await fetch("https://blomiasa.herokuapp.com/plantas", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -142,7 +142,7 @@ function App() {
       redirect: "follow",
     };
 
-    await fetch(`https://blomia.herokuapp.com/plantas/eliminar/${_id}}`, requestOptions)
+    await fetch(`https://blomiasa.herokuapp.com/plantas/eliminar/${_id}}`, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

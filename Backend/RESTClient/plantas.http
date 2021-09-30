@@ -13,7 +13,7 @@ content-type: application/json
 	"Foto": "FOTO"
 }
 ### añadir nueva planta heroku
-POST https://blomia.herokuapp.com/plantas HTTP/1.1
+POST https://blomiasa.herokuapp.com/plantas HTTP/1.1
 content-type: application/json
 
 {
@@ -40,5 +40,5 @@ DELETE http://localhost:5000/plantas/eliminar/61534cb06a65282218ba9ea8 HTTP/1.1
 GET http://localhost:5000/plantas/activo/615355747e35f8117ffd11f4
 
 ### Cambiar estado activo
-GET https://blomia.herokuapp.com/plantas/activo/615355747e35f8117ffd11f4
+GET https://blomiasa.herokuapp.com/plantas/activo/615355747e35f8117ffd11f4
 
