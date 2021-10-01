@@ -6,10 +6,6 @@ import Formulario from './pages/Formulario/Formulario.jsx';
 import MuestraDatos from './pages/MuestaDatos/MuestraDatos.jsx';
 import Registrarse from "./pages/Registrarse/Registrarse.jsx";
 import Login from "./pages/Login/Login.jsx";
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 import './App.css';
 
 
@@ -61,44 +57,46 @@ function App() {
   // ----------------------------Get Busqueda---------------------------------
 
 
-  const urlBuscar = 'https://blomiasa.herokuapp.com/plantas';
+  // const urlBuscar = 'https://blomiasa.herokuapp.com/plantas';
   
-  const [planta, setPlanta] = useState('');
+  // const [planta, setPlanta] = useState('');
 
-  const gestorBuscar = (e) => {
-    setPlanta(e.target.value);
-  }
-  const buscaDatos = async () => {
-    try {
-      let respuesta = await fetch(urlBuscar);
-      let resultado = await respuesta.json();
-      const busqueda = resultado.filter((element) =>{
-        return element.Nombre === planta;
-      })
-      if(planta === ""){
-      setPlanta(resultado)
-      return resultado;
-    } else{
-      setPlanta(busqueda)
-      return resultado;
-    }
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // console.log(planta)
 
-
-  useEffect(() => {
-  buscaDatos();
-  }, [planta])
+  // const gestorBuscar = (e) => {
+  //   setPlanta(e.target.value);
+  // }
+  // const buscaDatos = async () => {
+  //   try {
+  //     let respuesta = await fetch(urlBuscar);
+  //     let resultado = await respuesta.json();
+  //     const busqueda = resultado.filter((element) =>{
+  //       return element.Nombre === planta;
+  //     })
+  //     if(planta === ""){
+  //     setPlanta(resultado)
+  //     return resultado;
+  //   } else{
+  //     setPlanta(busqueda)
+  //     return resultado;
+  //   }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
 
-  const busquedaUsuario = (e)=>{
-    e.preventDefault();
-    const buscar = planta;
-    setPlanta(buscar);
-    setPlanta("");
-  }
+  // useEffect(() => {
+  // buscaDatos();
+  // }, [planta])
+
+
+  // const busquedaUsuario = (e)=>{
+  //   e.preventDefault();
+  //   const buscar = planta;
+  //   setPlanta(buscar);
+  //   setPlanta("");
+  // }
 
   // ----------------------------Funcion Añadir---------------------------------
 
@@ -214,26 +212,6 @@ function App() {
 					</Switch>
 				</Router>              
         <Formulario añadirPlanta={añadirPlanta}/>
-        <div id='inicio'>
-        <Stack spacing={2} sx={{ width: 300 }}>
-      <Autocomplete
-        freeSolo
-        id="busqueda"
-        disableClearable
-        options={newResultado.map((option) => option.Nombre)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Buscar Planta"
-            InputProps={{
-              ...params.InputProps,
-              type: 'search',
-            }}
-          />
-        )}
-      />
-    </Stack>
-        </div>
         <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>  
     </div>
   );

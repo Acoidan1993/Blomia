@@ -10,3 +10,12 @@
 .juntar{
     justify-content: space-around !important;
 }
+
+#inicio{
+    height: 15% !important;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    margin-left: 41.5%;
+    align-items: center !important;
+    width: 20% !important;
+}

@@ -84,8 +84,8 @@ return (
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleClose, borrarPlanta} autoFocus>
+          <Button onClick={handleClose} id="botones">No</Button>
+          <Button onClick={handleClose, borrarPlanta} autoFocus id="botones">
             Si
           </Button>
         </DialogActions>
