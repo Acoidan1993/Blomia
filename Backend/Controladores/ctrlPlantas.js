@@ -48,8 +48,9 @@ const obtenerPlantaPorNombre = async (req, res, next) => {
 	respuesta ? res.json({ respuesta }) : res.send("No se encontró esta planta");
 };
 const eliminarPlanta = async (req, res, next) => {
+	const idPlanta = req.params.plid;
 	try {
-		elimina = await Plantas.findByIdAndDelete(req.params);
+		elimina = await Plantas.findById(idPlanta);
 	} catch (error) {
 		E = new Error("Fallo en la busqueda");
 		E.code = 404;

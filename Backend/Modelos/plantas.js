@@ -5,7 +5,7 @@ const plantaEsquema = new mongoose.Schema({
 	Referencia: String,
 	Tamaño: String,
 	Stock: Number,
-	Activo: Boolean,
+	Activo: String,
 	Tipo: String,
 	Precio: Number,
 	FotoUrl: String,

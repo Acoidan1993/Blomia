@@ -136,7 +136,9 @@ function App() {
 
   // ----------------------------Get Eliminar---------------------------------
 
-  const eliminarPlanta = async (_id) => {
+ 
+
+  const eliminarPlanta = async (_id) => { 
     var requestOptions = {
       method: "DELETE",
       redirect: "follow",
