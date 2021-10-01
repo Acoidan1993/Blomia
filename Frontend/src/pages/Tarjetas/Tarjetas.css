@@ -31,3 +31,16 @@
     height: 400px !important;
 }
 
+#alert-dialog-title{
+    background:#007385 !important
+}
+
+#alertTitle{
+    color:#fff;
+}
+
+#alert{
+    color: black;
+    font-weight: bold;
+}
+

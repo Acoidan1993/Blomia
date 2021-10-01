@@ -144,7 +144,7 @@ function App() {
       redirect: "follow",
     };
 
-    await fetch(`https://blomiasa.herokuapp.com/plantas/eliminar/${_id}}`, requestOptions)
+    await fetch(`https://blomiasa.herokuapp.com/plantas/eliminar/`+ _id, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

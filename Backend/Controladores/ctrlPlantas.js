@@ -27,6 +27,9 @@ const agregarNuevaPlanta = async (req, res, next) => {
 	}
 	res.json({ nuevaPlanta });
 };
+
+
+
 const obtenerPlantas = async (req, res, next) => {
 	try {
 		respuesta = await Plantas.find({});
@@ -37,6 +40,10 @@ const obtenerPlantas = async (req, res, next) => {
 	}
 	res.json({ respuesta });
 };
+
+
+
+
 const obtenerPlantaPorNombre = async (req, res, next) => {
 	try {
 		respuesta = await Plantas.findOne({ Nombre: req.params.nombre });
@@ -47,8 +54,12 @@ const obtenerPlantaPorNombre = async (req, res, next) => {
 	}
 	respuesta ? res.json({ respuesta }) : res.send("No se encontró esta planta");
 };
+
+
+
+
 const eliminarPlanta = async (req, res, next) => {
-	const idPlanta = req.params.plid;
+	const idPlanta = req.params._id;
 	try {
 		elimina = await Plantas.findById(idPlanta);
 	} catch (error) {
@@ -56,8 +67,18 @@ const eliminarPlanta = async (req, res, next) => {
 		E.code = 404;
 		return next(E);
 	}
+	try{
+		await elimina.remove();
+	}catch (error) {
+	E = new Error("Fallo al eliminar");
+	E.code = 404;
+	return next(E);
+	}
 	res.send("Planta eliminada");
 };
+
+
+
 
 const cambiarActivo = async (req, res, next) => {
 	try {
@@ -78,6 +99,10 @@ const cambiarActivo = async (req, res, next) => {
 	// res.json({ respuesta });
 	res.send(`Actualizado: Activo = ${respuesta.Activo}`);
 };
+
+
+
+
 /*****************************************
  * TODO
  * Metodos:

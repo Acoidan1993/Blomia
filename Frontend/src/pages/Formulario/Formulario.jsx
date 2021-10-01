@@ -20,7 +20,6 @@ import "./Formulario.css";
   const [Tipo, setTipo] = useState("");
   const [Precio, setPrecio] = useState("");
 
-
     const gestorFoto = (e)=>{
         setFoto(e.target.value);
     }
@@ -37,7 +36,6 @@ import "./Formulario.css";
         setStock(e.target.value);
     }
     const gestorActivo = (e)=>{
-      // Hola Aco
         if(e.target.checked === true){
           setActivo("Si");
         }else{
