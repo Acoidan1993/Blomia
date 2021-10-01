@@ -88,13 +88,12 @@ import "./Formulario.css";
   }
   
 
-
     const success = () => 
     toast.success('PLANTA CREADA CON EXITO', {
         position: "top-center",
         type: "success",
         theme: "colored",
-        autoClose: 3000,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -108,14 +107,14 @@ import "./Formulario.css";
             <p className="mensajeError">Debe completar todos los campos</p>
           </div>) : null}
       <form type="" onSubmit={submit} encType="multipart/form-data" className="formulario bg-success mb-3" >
-        <h2 className="tituloTarjeta">Crear Nueva Planta</h2>
+        <h2 className="tituloTarjeta">Crear Nueva Referencia</h2>
       <label for="File">Seleccione imagen de planta</label>
 	    <input type="text" id="imageFile"accept="image/*" onChange={gestorFoto} value={Foto} required className="form-control"/>
       <input type="text" placeholder="Nombre" onChange={gestorNombre} value={Nombre} required className="form-control"/>
       <input type="text" placeholder="Referencia" onChange={gestorReferencia} value={Referencia} required className="form-control"/>
       <input type="text" placeholder="Tamaño" onChange={gestorTamaño} value={Tamaño}required className="form-control"/>
       <input type="number" placeholder="Stock" onChange={gestorStock} value={Stock} required className="form-control"/>
-      <label for="CheckBox">Marcar si la planta esta Activa</label>
+      <label for="CheckBox">Marcar si la referencia esta Activa</label>
       <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} value={Activo}/>
 
       {/* este input precio es de prueba--------------------------------------------------------------- */}

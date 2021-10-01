@@ -80,7 +80,7 @@ function MuestraDatos(props) {
     <div className="juntar">
         <div id='inicio'>
         <form action="" onSubmit={busquedaUsuario}>
-        <input type="text" name="busca" id="busca" placeholder="Buscar Planta" onChange={gestorBuscar} value={planta} class="form-control"/>
+        <input type="text" name="busca" id="busca" placeholder="Buscar por Nombre" onChange={gestorBuscar} value={planta} class="form-control"/>
         </form>
         {/* <input
               type="text"

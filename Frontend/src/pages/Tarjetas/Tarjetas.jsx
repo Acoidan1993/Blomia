@@ -80,7 +80,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <p id="alert">¿Esta seguro de que desea eliminar la planta?</p>
+            <p id="alert">¿Esta seguro de que desea eliminar esta referencia?</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
