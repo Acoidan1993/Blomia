@@ -40,7 +40,13 @@ import "./Formulario.css";
         setStock(e.target.value);
     }
     const gestorActivo = (e)=>{
-        setActivo(e.target.value);
+      // Hola Aco
+        if(e.target.checked === true){
+          setActivo("Si");
+        }else{
+          setActivo("No");
+        }
+        console.log(Activo);
     }
     const gestorTipo = (e)=>{
         setTipo(e.target.value);
