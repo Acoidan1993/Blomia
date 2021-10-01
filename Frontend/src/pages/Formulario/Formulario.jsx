@@ -1,9 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
 import 'react-toastify/dist/ReactToastify.css';
 import "./Formulario.css";
 
@@ -62,7 +59,7 @@ import "./Formulario.css";
       setError(false);
         
 
-      if(Foto === ""|| Nombre === ""|| Referencia === ""|| Tamaño === ""|| Stock === ""|| Tipo === ""|| Precio === ""){
+      if(Foto === ""|| Nombre === ""|| Referencia === ""|| Tamaño === ""|| Activo === ""||Stock === ""|| Tipo === ""|| Precio === ""){
         setError(true);
         console.log("hay error")
         return;
