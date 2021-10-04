@@ -13,16 +13,16 @@ content-type: application/json
 	"Foto": "FOTO"
 }
 ### añadir nueva planta heroku
-POST https://blomiasa.herokuapp.com/plantas HTTP/1.1
+POST https://blomia.herokuapp.com/plantas HTTP/1.1
 content-type: application/json
 
 {
-    "Nombre": "Planta 2",
-	"Referencia": "Esta planta da risa",
+    "Nombre": "Plantita",
+	"Referencia": "PLTT",
 	"Tamaño": 1.20,
 	"Stock": 8,
 	"Activo": true,
-	"Tipo": "Oregano",
+	"Tipo": "Colgar",
 	"Precio": 2.50,
 	"Foto": "FOTO"
 }

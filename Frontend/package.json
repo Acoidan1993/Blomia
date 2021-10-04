@@ -14,6 +14,7 @@
     "axios": "^0.21.4",
     "history": "^5.0.1",
     "material-ui": "^1.0.0-beta.47",
+    "node.js": "0.0.1-security",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.3",
     "react-dom": "^17.0.2",
