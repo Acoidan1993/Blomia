@@ -96,9 +96,9 @@ return (
     </div>
     <div>
       <p>{lista.Foto}</p>
-      <h2 id="nombre"><strong>{lista.Nombre}</strong></h2>
+      <h5 id="nombre"><strong>{lista.Nombre}</strong></h5>
     </div>
-    <h4><strong>Referencia: </strong>{lista.Referencia}</h4>
+    <p><strong>Referencia: </strong>{lista.Referencia}</p>
     <p><strong>Tamaño: </strong>{lista.Tamaño}</p>
     <p><strong>Stock: </strong>{lista.Stock}</p>
     <p><strong>Activo: </strong>{lista.Activo}</p>

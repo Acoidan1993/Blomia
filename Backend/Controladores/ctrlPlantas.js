@@ -123,7 +123,7 @@ const modificarPlanta = async (req, res, next) => {
 	}
 
 
-	planta = 2
+	planta = Object.assign(planta, req.body);
 	// planta.nombre = nombre;
 	// planta.descripcion = descripcion;
 

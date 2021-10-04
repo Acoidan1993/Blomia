@@ -49,3 +49,11 @@ content-type: application/json
 {
 	"Precio": 2.50
 }
+
+### Editar campos
+PATCH http://localhost:5000/plantas/modificar/Rosa HTTP/1.1
+content-type: application/json
+
+{
+	"Precio": 30
+}

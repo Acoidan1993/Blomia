@@ -35,7 +35,7 @@ function MuestraDatos(props) {
     // }, [buscador]);
 
 
-  const urlBuscar = 'https://blomiasa.herokuapp.com/plantas';
+  const urlBuscar = 'http://localhost:5000/plantas';
   
   const [planta, setPlanta] = useState([]);
 
