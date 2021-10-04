@@ -101,16 +101,57 @@ const cambiarActivo = async (req, res, next) => {
 };
 
 
+const modificarPlanta = async (req, res, next) => {
+	const { Nombre, Referencia, Tamaño, Stock, Activo, Tipo, Precio } = req.body;
+	const nombrePlanta = req.params.nombre;
+	let planta;
+	try {
+		planta = await Plantas.find(nombrePlanta);
+	} catch (error) {
+		const err = new Error(
+			'Ha habido algún problema. No se ha podido actualizar la información de la planta'
+		);
+		err.code = 500;
+		return next(err);
+	}
+
+	if (planta.creador.toString() !== req.userData.userId) {
+		const err = new Error('No tiene permiso para modificar esta planta');
+		err.code = 401; // Error de autorización
+		return next(err);
+	}
+
+
+	planta = Object.assign(planta, req.body);
+	// planta.nombre = nombre;
+	// planta.descripcion = descripcion;
+
+	try {
+		planta.save();
+	} catch (error) {
+		const err = new Error(
+			'Ha habido algún problema. No se ha podido guardar la información actualizada'
+		);
+		err.code = 500;
+		return next(err);
+	}
+
+	res.status(200).json({
+		planta,
+	});
+};
+
 
 
 /*****************************************
  * TODO
  * Metodos:
 
- * - Modificar planta
+ * - Modificar planta (revisar)
  */
 exports.agregarNuevaPlanta = agregarNuevaPlanta;
 exports.obtenerPlantas = obtenerPlantas;
 exports.obtenerPlantaPorNombre = obtenerPlantaPorNombre;
 exports.eliminarPlanta = eliminarPlanta;
 exports.cambiarActivo = cambiarActivo;
+exports.modificarPlanta = modificarPlanta;

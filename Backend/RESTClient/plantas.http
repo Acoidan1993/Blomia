@@ -42,3 +42,10 @@ GET http://localhost:5000/plantas/activo/615355747e35f8117ffd11f4
 ### Cambiar estado activo
 GET https://blomiasa.herokuapp.com/plantas/activo/615355747e35f8117ffd11f4
 
+### Editar campos
+PATCH https://blomiasa.herokuapp.com/plantas/modificar/Rosa HTTP/1.1
+content-type: application/json
+
+{
+	"Precio": 2.50
+}
