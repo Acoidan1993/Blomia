@@ -3,7 +3,7 @@ POST http://localhost:5000/plantas HTTP/1.1
 content-type: application/json
 
 {
-    "Nombre": "Planta 1",
+    "Nombre": "Oregano",
 	"Referencia": "Esta planta da risa",
 	"Tamaño": 1.20,
 	"Stock": 8,
@@ -40,10 +40,10 @@ DELETE http://localhost:5000/plantas/eliminar/61534cb06a65282218ba9ea8 HTTP/1.1
 GET http://localhost:5000/plantas/activo/615355747e35f8117ffd11f4
 
 ### Cambiar estado activo
-GET https://blomiasa.herokuapp.com/plantas/activo/615355747e35f8117ffd11f4
+GET https://blomia.herokuapp.com/plantas/activo/615355747e35f8117ffd11f4
 
 ### Editar campos
-PATCH https://blomiasa.herokuapp.com/plantas/modificar/Rosa HTTP/1.1
+PATCH https://blomia.herokuapp.com/plantas/modificar/Rosa HTTP/1.1
 content-type: application/json
 
 {

@@ -20,6 +20,7 @@ const agregarNuevaPlanta = async (req, res, next) => {
 		try {
 			await nuevaPlanta.save();
 		} catch (error) {
+			console.log(error)
 			E = new Error("No se pudo guardar");
 			E.code = 500;
 			return next(E);
@@ -122,7 +123,7 @@ const modificarPlanta = async (req, res, next) => {
 	}
 
 
-	planta = Object.assign(planta, req.body);
+	planta = 2
 	// planta.nombre = nombre;
 	// planta.descripcion = descripcion;
 

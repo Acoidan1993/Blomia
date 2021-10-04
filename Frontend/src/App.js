@@ -35,8 +35,9 @@ function App() {
 
   // ----------------------------Get Principal---------------------------------
 
-  const url = 'https://blomiasa.herokuapp.com/plantas';
+  const url = 'http://localhost:5000/plantas';
   const [newResultado, setResultado] = useState([]);
+  console.log(newResultado)
   
   const recuperaDatos = async () => {
     try {
@@ -124,7 +125,7 @@ function App() {
         redirect: 'follow'
     };
 
-    await fetch("https://blomiasa.herokuapp.com/plantas", requestOptions)
+    await fetch("http://localhost:5000/plantas", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
@@ -142,7 +143,7 @@ function App() {
       redirect: "follow",
     };
 
-    await fetch(`https://blomiasa.herokuapp.com/plantas/eliminar/`+ _id, requestOptions)
+    await fetch(`http://localhost:5000/plantas/eliminar/`+ _id, requestOptions)
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));

@@ -57,6 +57,8 @@ Tipo: lista.Tipo,
 Precio: lista.Precio,
 };
 
+
+
 modificar(modificaPlanta);
 
 setModifica("");
@@ -65,6 +67,7 @@ setModifica("");
 
 const gestorModifica = (event) => {
 setModifica(event.target.value);
+console.log(lista)
 };
 
 
@@ -109,7 +112,7 @@ return (
     <form action="" onSubmit={gestorEdit} encType="multipart/form-data" id="formularioedit">
       {/* <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos"
         value={modifica} className="form-control me-sm-2"></input> */}
-      <button type="submit" id="editar" className="btn btn-warning">Editar Campos</button>
+      <button type="submit" id="editar" className="btn btn-warning" onClick={gestorModifica}>Editar Campos</button>
     </form>
   </div>
 </div>
