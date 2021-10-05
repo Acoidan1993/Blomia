@@ -106,7 +106,7 @@ import "./Formulario.css";
           {error ? (<div className="divError">
             <p className="mensajeError">Debe completar todos los campos</p>
           </div>) : null}
-      <form type="" onSubmit={submit} encType="multipart/form-data" className="formulario bg-success mb-3" >
+      <form type="" onSubmit={submit}  encType="multipart/form-data" className="formulario bg-success mb-3" >
       <h2 className="tituloTarjeta">Crear Nueva Referencia</h2>
       <label for="File">Seleccione imagen de planta</label>
 	    <input type="text" id="imageFile"accept="image/*" onChange={gestorFoto} value={Foto} required className="form-control"/>
