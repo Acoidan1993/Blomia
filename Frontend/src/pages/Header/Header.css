@@ -21,6 +21,7 @@ header{
 }
 
 #userSI, #userNO{
-    align-items: right;
+    align-items: right;    
+    width: 80px;
 }
 

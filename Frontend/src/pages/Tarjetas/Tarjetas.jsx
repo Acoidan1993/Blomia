@@ -17,6 +17,8 @@ const modificar = props.modificar;
 const [modifica, setModifica] = useState("");
 const [error, setError] = useState("");
 const [open, setOpen] = React.useState(false);
+const [open2, setOpen2] = React.useState(false);
+
 
 const handleClickOpen = () => {
 setOpen(true);
@@ -26,6 +28,14 @@ const handleClose = () => {
 setOpen(false);
 };
 
+
+const handleClickOpen2 = () => {
+  setOpen2(true);
+  };
+  
+  const handleClose2 = () => {
+  setOpen2(false);
+  };
 
 // ----------------------------Gestor Borrar---------------------------------
 
@@ -112,7 +122,44 @@ return (
     <form action="" onSubmit={gestorEdit} encType="multipart/form-data" id="formularioedit">
       {/* <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos"
         value={modifica} className="form-control me-sm-2"></input> */}
-      <button type="submit" id="editar" className="btn btn-warning" onClick={gestorModifica}>Editar Campos</button>
+      <button type="submit" id="editar" className="btn btn-warning" onClick={handleClickOpen2}>Editar Campos</button>
+      <Dialog open={open2} onClose={handleClose2} aria-labelledby="alert-dialog-title" id="foredit"
+        aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">
+          <p id="alertTitle">{"Editar Referencia"}</p>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+          <form onSubmit={gestorEdit} encType="multipart/form-data" className="form">
+            <label for="File">Seleccione imagen de planta</label>
+            <input type="text" id="imageFile" accept="image/*" 
+              className="form-control" />
+            <input type="text" placeholder="Nombre" 
+              className="form-control" />
+            <input type="text" placeholder="Referencia" 
+              className="form-control" />
+            <input type="text" placeholder="Tamaño" 
+              className="form-control" />
+            <input type="number" placeholder="Stock" 
+              className="form-control" />
+            <label for="CheckBox">Marcar si la referencia esta Activa</label>
+            <input type="checkbox" placeholder="Activo" id="checkbox" />
+            {/* este input precio es de prueba--------------------------------------------------------------- */}
+            <input type="text" placeholder="Tipo" 
+              className="form-control" />
+            <input type="number" placeholder="Precio" step="0.01" 
+              className="form-control" />
+          </form>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+              <Button onClick={handleClose2} id="botones">Cancelar</Button>
+              <Button onClick={handleClose2} type="submit" autoFocus id="botones">
+            Editar
+          </Button>
+          
+        </DialogActions>
+      </Dialog>
     </form>
   </div>
 </div>

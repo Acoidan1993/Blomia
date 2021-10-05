@@ -59,49 +59,49 @@ return (
     {searchInput.length > 1 ? (
     filteredResults.map((item)=>{
 
-  // ----------------------------Gestor Borrar---------------------------------
+    // ----------------------------Gestor Borrar---------------------------------
 
-  const borrarPlanta = () => {
+    const borrarPlanta = () => {
     console.log(filteredResults)
-  eliminaP(filteredResults._id);
-  };
-  
-  // ----------------------------Gestor Editar---------------------------------
-  
-  const gestorEdit = (e) => {
-  e.preventDefault();
-  setError(false);
-  if (
-  modificarP.trim() === ""
-  ) {
-  setError(true);
-  return;
-  }
-  
-  const modificaPlanta = {
-  id: filteredResults._id,
-  Foto: filteredResults.Foto,
-  Nombre: filteredResults.Nombre,
-  Referencia: filteredResults.Referencia,
-  Tamaño: filteredResults.Tamaño,
-  Stock: filteredResults.Stock,
-  Activo: filteredResults.Activo,
-  Tipo: filteredResults.Tipo,
-  Precio: filteredResults.Precio,
-  };
-  
-  
-  
-  modificarP(modificaPlanta);
-  
-  setModifica("");
-  };
-  
-  
-  const gestorModifica = (event) => {
-  setModifica(event.target.value);
-  console.log(item)
-  };
+    eliminaP(filteredResults._id);
+    };
+
+    // ----------------------------Gestor Editar---------------------------------
+
+    const gestorEdit = (e) => {
+    e.preventDefault();
+    setError(false);
+    if (
+    modificarP.trim() === ""
+    ) {
+    setError(true);
+    return;
+    }
+
+    const modificaPlanta = {
+    id: filteredResults._id,
+    Foto: filteredResults.Foto,
+    Nombre: filteredResults.Nombre,
+    Referencia: filteredResults.Referencia,
+    Tamaño: filteredResults.Tamaño,
+    Stock: filteredResults.Stock,
+    Activo: filteredResults.Activo,
+    Tipo: filteredResults.Tipo,
+    Precio: filteredResults.Precio,
+    };
+
+
+
+    modificarP(modificaPlanta);
+
+    setModifica("");
+    };
+
+
+    const gestorModifica = (event) => {
+    setModifica(event.target.value);
+    console.log(item)
+    };
     return (
     <div className="card text-white bg-primary mb-3">
       <div key={item._id} id="tarjeta">
@@ -143,7 +143,24 @@ return (
         <form action="" onSubmit={gestorEdit} encType="multipart/form-data" id="formularioedit">
           {/* <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos"
             value={modifica} className="form-control me-sm-2"></input> */}
-          <button type="submit" id="editar" className="btn btn-warning" onClick={gestorModifica}>Editar Campos</button>
+          <button type="submit" id="editar" className="btn btn-warning" onClick={handleClickOpen}>Editar Campos</button>
+          <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+              <p id="alertTitle">{"Confirme eliminacion de planta"}</p>
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                <p id="alert">¿Esta seguro de que desea eliminar esta referencia?</p>
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} id="botones">No</Button>
+              <Button onClick={handleClose, gestorEdit} autoFocus id="botones">
+                Si
+              </Button>
+            </DialogActions>
+          </Dialog>
         </form>
       </div>
     </div>
