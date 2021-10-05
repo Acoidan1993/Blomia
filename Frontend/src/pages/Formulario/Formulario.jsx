@@ -116,7 +116,6 @@ import "./Formulario.css";
       <input type="number" placeholder="Stock" onChange={gestorStock} value={Stock} required className="form-control"/>
       <label for="CheckBox">Marcar si la referencia esta Activa</label>
       <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} value={Activo}/>
-      <label for="CheckBox">{Activo}</label>
       {/* este input precio es de prueba--------------------------------------------------------------- */}
       <input type="text" placeholder="Tipo" onChange={gestorTipo} value={Tipo} required className="form-control"/>
       <input type="number" placeholder="Precio" step="0.01" onChange={gestorPrecio} value={Precio} required className="form-control"/>

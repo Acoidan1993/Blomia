@@ -37,7 +37,6 @@ function App() {
 
   const url = 'http://localhost:5000/plantas';
   const [newResultado, setResultado] = useState([]);
-  console.log(newResultado)
   
   const recuperaDatos = async () => {
     try {
@@ -156,31 +155,31 @@ function App() {
 
 
   const modificarPlanta = async (planta) => {
-    // var myHeaders = new Headers();
-    // myHeaders.append("Content-Type", "application/json");
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    // var raw = JSON.stringify({
-    //   Foto: planta.Foto,
-    //   Nombre: planta.Nombre,
-    //   Referencia: planta.Referencia,
-    //   Tamaño: planta.Tamaño,
-    //   Stock: planta.Stock,
-    //   Activo: planta.Activo,
-    //   Tipo: planta.Tipo,
-    //   Precio: planta.Precio
-    // });
+    var raw = JSON.stringify({
+      Foto: planta.Foto,
+      Nombre: planta.Nombre,
+      Referencia: planta.Referencia,
+      Tamaño: planta.Tamaño,
+      Stock: planta.Stock,
+      Activo: planta.Activo,
+      Tipo: planta.Tipo,
+      Precio: planta.Precio
+    });
 
-    // var requestOptions = {
-    //   method: "PUT",
-    //   headers: myHeaders,
-    //   body: raw,
-    //   redirect: "follow",
-    // };
+    var requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
 
-    // await fetch(`http://localhost:5000/api/blomia/plantas/${planta._id}`, requestOptions)
-    //   .then((response) => response.text())
-    //   .catch((error) => console.log("error", error));
-    //   recuperaDatos();
+    await fetch(`http://localhost:5000/api/blomia/plantas/${planta._id}`, requestOptions)
+      .then((response) => response.text())
+      .catch((error) => console.log("error", error));
+      recuperaDatos();
   };
   
 
