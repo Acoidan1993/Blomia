@@ -16,3 +16,11 @@ header{
     width: 100vw !important;
 }
 
+#botonesUser{
+    margin-left: 70% !important;
+}
+
+#userSI, #userNO{
+    align-items: right;
+}
+
