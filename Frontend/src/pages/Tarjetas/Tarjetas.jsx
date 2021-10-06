@@ -11,8 +11,10 @@ import { useState } from 'react';
 
 function Tarjetas(props) {
 const lista = props.listaPlantas;
+const listaEdit = props.listaPlantas;
 const eliminar = props.eliminar;
 const modificar = props.modificar;
+
 
 const [modifica, setModifica] = useState("");
 const [error, setError] = useState("");
@@ -65,19 +67,11 @@ Stock: lista.Stock,
 Activo: lista.Activo,
 Tipo: lista.Tipo,
 Precio: lista.Precio,
-};
-
-
+}
 
 modificar(modificaPlanta);
 
 setModifica("");
-};
-
-
-const gestorModifica = (event) => {
-setModifica(event.target.value);
-console.log(lista)
 };
 
 
@@ -93,7 +87,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <p id="alert">¿Esta seguro de que desea eliminar esta referencia?</p>
+            <p id="alert">¿Esta seguro de que desea eliminar {lista.Referencia}?</p>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -115,13 +109,11 @@ return (
     <p><strong>Tipo: </strong>{lista.Tipo}</p>
     <p><strong>Precio: </strong>{lista.Precio}</p>
   </div>
-  <div key={modificar.id} id="gestoredit">
+  <div key={listaEdit._id} id="gestoredit">
     {/* {error ? (<div className="divError">
       <p className="mensajeError">Debe completar todos los campos</p>
     </div>) : null} */}
-    <form action="" onSubmit={gestorEdit} encType="multipart/form-data" id="formularioedit">
-      {/* <input onChange={gestorModifica} type="text" name="Campos" id="cambiaCampos" placeholder="Editar Campos"
-        value={modifica} className="form-control me-sm-2"></input> */}
+    <div id="formularioedit">
       <button type="submit" id="editar" className="btn btn-warning" onClick={handleClickOpen2}>Editar Campos</button>
       <Dialog open={open2} onClose={handleClose2} aria-labelledby="alert-dialog-title" id="foredit"
         aria-describedby="alert-dialog-description">
@@ -130,7 +122,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <form onSubmit={gestorEdit} encType="multipart/form-data" className="form">
+          <form encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
             <input type="text" id="imageFile" accept="image/*" 
               className="form-control" />
@@ -149,18 +141,17 @@ return (
               className="form-control" />
             <input type="number" placeholder="Precio" step="0.01" 
               className="form-control" />
-          </form>
+        </form>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
               <Button onClick={handleClose2} id="botones">Cancelar</Button>
-              <Button onClick={handleClose2} type="submit" autoFocus id="botones">
+              <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
             Editar
           </Button>
-          
         </DialogActions>
       </Dialog>
-    </form>
+    </div>
   </div>
 </div>
 );

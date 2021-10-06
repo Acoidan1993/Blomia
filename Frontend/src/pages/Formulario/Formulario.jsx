@@ -102,6 +102,7 @@ import "./Formulario.css";
         });;
   
   return (
+    <div className="container-fluid">
       <div className="cuerpo">
           {error ? (<div className="divError">
             <p className="mensajeError">Debe completar todos los campos</p>
@@ -134,6 +135,7 @@ import "./Formulario.css";
       draggable
       pauseOnHover/>
       </div>    
+    </div>
     </div>
   );
 }

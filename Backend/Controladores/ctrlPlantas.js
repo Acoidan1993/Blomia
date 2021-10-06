@@ -104,10 +104,10 @@ const cambiarActivo = async (req, res, next) => {
 
 const modificarPlanta = async (req, res, next) => {
 	const { Nombre, Referencia, Tamaño, Stock, Activo, Tipo, Precio } = req.body;
-	const nombrePlanta = req.params.nombre;
+	const nombrePlanta = req.params.Nombre;
 	let planta;
 	try {
-		planta = await Plantas.find(nombrePlanta);
+		planta = await Plantas.findOne({nombre: {$eq: nombrePlanta}});
 	} catch (error) {
 		const err = new Error(
 			'Ha habido algún problema. No se ha podido actualizar la información de la planta'
@@ -116,15 +116,15 @@ const modificarPlanta = async (req, res, next) => {
 		return next(err);
 	}
 
-	if (planta.creador.toString() !== req.userData.userId) {
-		const err = new Error('No tiene permiso para modificar esta planta');
-		err.code = 401; // Error de autorización
-		return next(err);
-	}
+	// if (planta.creador.toString() !== req.userData.userId) {
+	// 	const err = new Error('No tiene permiso para modificar esta planta');
+	// 	err.code = 401; // Error de autorización
+	// 	return next(err);
+	// }
 
 
 	planta = Object.assign(planta, req.body);
-	// planta.nombre = nombre;
+	// planta.Nombre = Nombre;
 	// planta.descripcion = descripcion;
 
 	try {

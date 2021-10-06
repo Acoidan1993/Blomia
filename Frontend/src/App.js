@@ -170,13 +170,13 @@ function App() {
     });
 
     var requestOptions = {
-      method: "PUT",
+      method: "PATCH",
       headers: myHeaders,
       body: raw,
       redirect: "follow",
     };
 
-    await fetch(`http://localhost:5000/api/blomia/plantas/${planta._id}`, requestOptions)
+    await fetch(`http://localhost:5000/plantas/modificar/${planta.Nombre}`, requestOptions)
       .then((response) => response.text())
       .catch((error) => console.log("error", error));
       recuperaDatos();

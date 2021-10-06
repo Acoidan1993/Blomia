@@ -2,14 +2,13 @@
     width: 50% !important;
 }
 
-.gestoredit{
+#gestoredit{
     margin: 0 !important;
     padding: 0 !important;
+    align-content: center;
 }
 
 #formularioedit{
-    display: flex;
-    align-items: center;
     margin: 15px 0px;
     border-radius: 15px;
 }

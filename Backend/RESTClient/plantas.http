@@ -55,5 +55,5 @@ PATCH http://localhost:5000/plantas/modificar/Rosa HTTP/1.1
 content-type: application/json
 
 {
-	"Precio": 30
+	"Precio": 257
 }
