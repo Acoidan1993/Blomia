@@ -15,6 +15,7 @@ const listaEdit = props.listaPlantas;
 const eliminar = props.eliminar;
 const modificar = props.modificar;
 
+console.log(modificar)
 
 const [modifica, setModifica] = useState("");
 const [error, setError] = useState("");
@@ -69,9 +70,11 @@ Tipo: lista.Tipo,
 Precio: lista.Precio,
 }
 
+
 modificar(modificaPlanta);
 
 setModifica("");
+
 };
 
 
@@ -109,7 +112,7 @@ return (
     <p><strong>Tipo: </strong>{lista.Tipo}</p>
     <p><strong>Precio: </strong>{lista.Precio}</p>
   </div>
-  <div key={listaEdit._id} id="gestoredit">
+  <div key={lista._id} id="gestoredit">
     {/* {error ? (<div className="divError">
       <p className="mensajeError">Debe completar todos los campos</p>
     </div>) : null} */}
@@ -122,7 +125,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <form encType="multipart/form-data" className="form">
+          <div encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
             <input type="text" id="imageFile" accept="image/*" 
               className="form-control" />
@@ -141,7 +144,7 @@ return (
               className="form-control" />
             <input type="number" placeholder="Precio" step="0.01" 
               className="form-control" />
-        </form>
+        </div>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

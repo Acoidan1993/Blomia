@@ -12,7 +12,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-
 function MuestraDatos(props) {
 const listaPlantas = props.listaPlantas;
 const eliminaP = props.eliminarP;
@@ -102,7 +101,6 @@ return (
     };
 
 
-
     modificarP(modificaPlanta);
 
     setModifica("");
@@ -113,6 +111,8 @@ return (
     setModifica(event.target.value);
     console.log(item)
     };
+
+
     return (
     <div className="card text-white bg-primary mb-3">
       <div key={item._id} id="tarjeta">

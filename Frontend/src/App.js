@@ -159,14 +159,14 @@ function App() {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-      Foto: planta.Foto,
-      Nombre: planta.Nombre,
-      Referencia: planta.Referencia,
-      Tamaño: planta.Tamaño,
-      Stock: planta.Stock,
-      Activo: planta.Activo,
-      Tipo: planta.Tipo,
-      Precio: planta.Precio
+      "Foto": planta.Foto,
+      "Nombre": planta.Nombre,
+      "Referencia": planta.Referencia,
+      "Tamaño": planta.Tamaño,
+      "Stock": planta.Stock,
+      "Activo": planta.Activo,
+      "Tipo": planta.Tipo,
+      "Precio": planta.Precio
     });
 
     var requestOptions = {
