@@ -71,8 +71,9 @@ return (
 
     // ----------------------------Gestor Borrar---------------------------------
 
+    //---------------------------------------------------elimina pero no lanza la pagina de nuevo-------------------------------------------
+
     const borrarPlanta = () => {
-    console.log(item)
     eliminaP(item._id);
     };
 
@@ -107,15 +108,10 @@ return (
     };
 
 
-    const gestorModifica = (event) => {
-    setModifica(event.target.value);
-    console.log(item)
-    };
-
 
     return (
     <div className="card text-white bg-primary mb-3">
-      <div key={item._id} id="tarjeta">
+      <div key={filteredResults._id} id="tarjeta">
         <div className="eliminar">
           <button type="submit" id="borrar" onClick={handleClickOpen} className="fas fa-times btn btn-danger"></button>
           <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title"
@@ -147,7 +143,7 @@ return (
         <p><strong>Tipo: </strong>{item.Tipo}</p>
         <p><strong>Precio: </strong>{item.Precio}</p>
       </div>
-      <div key={modificarP.id} id="gestoredit">
+      <div key={item._id} id="gestoredit">
         {/* {error ? (<div className="divError">
           <p className="mensajeError">Debe completar todos los campos</p>
         </div>) : null} */}
@@ -184,7 +180,7 @@ return (
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose2} id="botones">Cancelar</Button>
-              <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
+              <Button onClick={handleClose2, gestorEdit} onSubmit={handleClose} type="submit" autoFocus id="botones">
             Editar
           </Button>
         </DialogActions>
