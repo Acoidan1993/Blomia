@@ -72,8 +72,8 @@ return (
     // ----------------------------Gestor Borrar---------------------------------
 
     const borrarPlanta = () => {
-    console.log(filteredResults)
-    eliminaP(filteredResults._id);
+    console.log(item)
+    eliminaP(item._id);
     };
 
     // ----------------------------Gestor Editar---------------------------------
@@ -89,15 +89,15 @@ return (
     }
 
     const modificaPlanta = {
-    id: filteredResults._id,
-    Foto: filteredResults.Foto,
-    Nombre: filteredResults.Nombre,
-    Referencia: filteredResults.Referencia,
-    Tamaño: filteredResults.Tamaño,
-    Stock: filteredResults.Stock,
-    Activo: filteredResults.Activo,
-    Tipo: filteredResults.Tipo,
-    Precio: filteredResults.Precio,
+    id: item._id,
+    Foto: item.Foto,
+    Nombre: item.Nombre,
+    Referencia: item.Referencia,
+    Tamaño: item.Tamaño,
+    Stock: item.Stock,
+    Activo: item.Activo,
+    Tipo: item.Tipo,
+    Precio: item.Precio,
     };
 
 
