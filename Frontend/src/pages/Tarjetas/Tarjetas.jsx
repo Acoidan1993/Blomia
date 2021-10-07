@@ -10,74 +10,116 @@ import { useState, useEffect } from 'react';
 
 
 function Tarjetas(props) {
-const recupera = props.recupera;
-const lista = props.listaPlantas;
-const eliminar = props.eliminar;
-const modificar = props.modificar;
+  const lista = props.listaPlantas;
+  const eliminar = props.eliminar;
+  const modificar = props.modificar;
+  
+  const [modifica, setModifica] = useState("");
+  const [error, setError] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  
+  const [Foto, setFoto] = useState("");
+  const [Nombre, setNombre] = useState("");
+  const [Referencia, setReferencia] = useState("");
+  const [Tamaño, setTamaño] = useState("");
+  const [Stock, setStock] = useState("");
+  const [Activo, setActivo] = useState(false);
+  const [Tipo, setTipo] = useState("");
+  const [Precio, setPrecio] = useState("");
+  
 
-const [modifica, setModifica] = useState("");
-const [error, setError] = useState("");
-const [open, setOpen] = React.useState(false);
-const [open2, setOpen2] = React.useState(false);
-
-
-const handleClickOpen = () => {
-setOpen(true);
-};
-
-const handleClose = () => {
-setOpen(false);
-};
-
-
-const handleClickOpen2 = () => {
-  setOpen2(true);
+  const handleClickOpen = () => {
+  setOpen(true);
   };
   
+  const handleClose = () => {
+  setOpen(false);
+  };
+  
+  
+  const handleClickOpen2 = () => {
+  setOpen2(true);
+  };
+    
   const handleClose2 = () => {
   setOpen2(false);
   };
+  
+  // ----------------------------Gestor Borrar---------------------------------
+  
+  const borrarPlanta = () => {
+  eliminar(lista._id);
+  };
+  
+  // ----------------------------Gestor Editar---------------------------------
+  
+  const gestorEdit = (e) => {
+  e.preventDefault();
+  setError(false);
+  if (
+  Foto.trim() === ""||
+  Nombre.trim() === ""||
+  Referencia.trim() === ""||
+  Tamaño.trim() === ""||
+  Stock.trim() === ""||
+  Activo.trim() === ""||
+  Tipo.trim() === ""||
+  Precio.trim() === ""
+  ) {
+  setError(true);
+  return;
+  }
+  
+  const modificaPlanta = {
+  id: lista._id,
+  Foto: lista.Foto,
+  Nombre: lista.Nombre,
+  Referencia: lista.Referencia,
+  Tamaño: lista.Tamaño,
+  Stock: lista.Stock,
+  Activo: lista.Activo,
+  Tipo: lista.Tipo,
+  Precio: lista.Precio,
+  }
+  
+  modificar(modificaPlanta);
+  
+  setFoto("");
+  setNombre("");
+  setReferencia("");
+  setTamaño("");
+  setStock("");
+  setActivo(false);
+  setTipo("");
+  setPrecio("");
 
-// ----------------------------Gestor Borrar---------------------------------
+  };
 
-const borrarPlanta = () => {
-eliminar(lista._id);
-};
-
-useEffect(() => {
-}, [])
-
-// ----------------------------Gestor Editar---------------------------------
-
-const gestorEdit = (e) => {
-e.preventDefault();
-setError(false);
-if (
-modifica.trim() === ""
-) {
-setError(true);
-return;
-}
-
-const modificaPlanta = {
-id: lista._id,
-Foto: lista.Foto,
-Nombre: lista.Nombre,
-Referencia: lista.Referencia,
-Tamaño: lista.Tamaño,
-Stock: lista.Stock,
-Activo: lista.Activo,
-Tipo: lista.Tipo,
-Precio: lista.Precio,
-}
-
-
-modificar(modificaPlanta);
-
-setModifica("");
-
-};
-
+  const gestorFoto = (event) => {
+    setFoto(event.target.value);
+  };
+  const gestorNombre = (event) => {
+    setNombre(event.target.value);
+  };
+  const gestorReferencia = (event) => {
+    setReferencia(event.target.value);
+  };
+  const gestorTamaño = (event) => {
+    setTamaño(event.target.value);
+  };
+  const gestorStock = (event) => {
+    setStock(event.target.value);
+  };
+  const gestorActivo = (event) => {
+    setActivo(event.target.value);
+  };
+  const gestorTipo = (event) => {
+    setTipo(event.target.value);
+  };
+  const gestorPrecio = (event) => {
+    setPrecio(event.target.value);
+  };
 
 return (
   <div className="juntar">
@@ -128,26 +170,19 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <div encType="multipart/form-data" className="form">
+          <form encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
-            <input type="text" id="imageFile" accept="image/*" 
-              className="form-control" />
-            <input type="text" placeholder="Nombre" 
-              className="form-control" />
-            <input type="text" placeholder="Referencia" 
-              className="form-control" />
-            <input type="text" placeholder="Tamaño" 
-              className="form-control" />
-            <input type="number" placeholder="Stock" 
-              className="form-control" />
+            <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
+            <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
+            <input type="text" placeholder="Referencia" onChage={gestorReferencia} value={Referencia} className="form-control" />
+            <input type="text" placeholder="Tamaño" onChage={gestorTamaño} value={Tamaño} className="form-control" />
+            <input type="number" placeholder="Stock" onChage={gestorStock} value={Stock} className="form-control" />
             <label for="CheckBox">Marcar si la referencia esta Activa</label>
-            <input type="checkbox" placeholder="Activo" id="checkbox" />
+            <input type="checkbox" placeholder="Activo" id="checkbox" onChage={gestorActivo} value={Activo}/>
             {/* este input precio es de prueba--------------------------------------------------------------- */}
-            <input type="text" placeholder="Tipo" 
-              className="form-control" />
-            <input type="number" placeholder="Precio" step="0.01" 
-              className="form-control" />
-        </div>
+            <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
+            <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
+            </form>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

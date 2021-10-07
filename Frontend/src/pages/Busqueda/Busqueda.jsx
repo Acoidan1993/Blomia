@@ -21,7 +21,16 @@ function Busqueda(props) {
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   
+  const [Foto, setFoto] = useState("");
+  const [Nombre, setNombre] = useState("");
+  const [Referencia, setReferencia] = useState("");
+  const [Tamaño, setTamaño] = useState("");
+  const [Stock, setStock] = useState("");
+  const [Activo, setActivo] = useState(false);
+  const [Tipo, setTipo] = useState("");
+  const [Precio, setPrecio] = useState("");
   
+
   const handleClickOpen = () => {
   setOpen(true);
   };
@@ -51,7 +60,14 @@ function Busqueda(props) {
   e.preventDefault();
   setError(false);
   if (
-  modifica.trim() === ""
+  Foto.trim() === ""||
+  Nombre.trim() === ""||
+  Referencia.trim() === ""||
+  Tamaño.trim() === ""||
+  Stock.trim() === ""||
+  Activo.trim() === ""||
+  Tipo.trim() === ""||
+  Precio.trim() === ""
   ) {
   setError(true);
   return;
@@ -69,11 +85,42 @@ function Busqueda(props) {
   Precio: lista.Precio,
   }
   
-  
   modificar(modificaPlanta);
   
-  setModifica("");
-  
+  setFoto("");
+  setNombre("");
+  setReferencia("");
+  setTamaño("");
+  setStock("");
+  setActivo(false);
+  setTipo("");
+  setPrecio("");
+
+  };
+
+  const gestorFoto = (event) => {
+    setFoto(event.target.value);
+  };
+  const gestorNombre = (event) => {
+    setNombre(event.target.value);
+  };
+  const gestorReferencia = (event) => {
+    setReferencia(event.target.value);
+  };
+  const gestorTamaño = (event) => {
+    setTamaño(event.target.value);
+  };
+  const gestorStock = (event) => {
+    setStock(event.target.value);
+  };
+  const gestorActivo = (event) => {
+    setActivo(event.target.value);
+  };
+  const gestorTipo = (event) => {
+    setTipo(event.target.value);
+  };
+  const gestorPrecio = (event) => {
+    setPrecio(event.target.value);
   };
 
 return (
@@ -125,25 +172,18 @@ return (
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-            <form onSubmit={gestorEdit} encType="multipart/form-data" className="form">
+            <form encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
-            <input type="text" id="imageFile" accept="image/*" 
-              className="form-control" />
-            <input type="text" placeholder="Nombre" 
-              className="form-control" />
-            <input type="text" placeholder="Referencia" 
-              className="form-control" />
-            <input type="text" placeholder="Tamaño" 
-              className="form-control" />
-            <input type="number" placeholder="Stock" 
-              className="form-control" />
+            <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
+            <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
+            <input type="text" placeholder="Referencia" onChage={gestorReferencia} value={Referencia} className="form-control" />
+            <input type="text" placeholder="Tamaño" onChage={gestorTamaño} value={Tamaño} className="form-control" />
+            <input type="number" placeholder="Stock" onChage={gestorStock} value={Stock} className="form-control" />
             <label for="CheckBox">Marcar si la referencia esta Activa</label>
-            <input type="checkbox" placeholder="Activo" id="checkbox" />
+            <input type="checkbox" placeholder="Activo" id="checkbox" onChage={gestorActivo} value={Activo}/>
             {/* este input precio es de prueba--------------------------------------------------------------- */}
-            <input type="text" placeholder="Tipo" 
-              className="form-control" />
-            <input type="number" placeholder="Precio" step="0.01" 
-              className="form-control" />
+            <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
+            <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
             </form>
               </DialogContentText>
             </DialogContent>
