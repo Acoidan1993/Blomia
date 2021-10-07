@@ -6,16 +6,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function Tarjetas(props) {
+const recupera = props.recupera;
 const lista = props.listaPlantas;
-const listaEdit = props.listaPlantas;
 const eliminar = props.eliminar;
 const modificar = props.modificar;
-
-console.log(modificar)
 
 const [modifica, setModifica] = useState("");
 const [error, setError] = useState("");
@@ -45,6 +43,9 @@ const handleClickOpen2 = () => {
 const borrarPlanta = () => {
 eliminar(lista._id);
 };
+
+useEffect(() => {
+}, [])
 
 // ----------------------------Gestor Editar---------------------------------
 
@@ -79,6 +80,8 @@ setModifica("");
 
 
 return (
+  <div className="juntar">
+  <div className="contenido">
 <div className="card text-white bg-primary mb-3">
   <div key={lista._id} id="tarjeta">
     <div className="eliminar">
@@ -156,6 +159,8 @@ return (
       </Dialog>
     </div>
   </div>
+</div>
+</div>
 </div>
 );
 }

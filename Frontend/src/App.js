@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./pages/Header/Header.jsx";
 import Formulario from './pages/Formulario/Formulario.jsx';
-import MuestraDatos from './pages/MuestaDatos/MuestraDatos.jsx';
+import * as React from 'react';
+import Tarjetas from "./pages/Tarjetas/Tarjetas.jsx";
+import Busqueda from "./pages/Busqueda/Busqueda.jsx";
 import Registrarse from "./pages/Registrarse/Registrarse.jsx";
 import Login from "./pages/Login/Login.jsx";
 import './App.css';
@@ -54,49 +56,6 @@ function App() {
   recuperaDatos();
   }, [])
 
-  // ----------------------------Get Busqueda---------------------------------
-
-
-  // const urlBuscar = 'https://blomiasa.herokuapp.com/plantas';
-  
-  // const [planta, setPlanta] = useState('');
-
-  // console.log(planta)
-
-  // const gestorBuscar = (e) => {
-  //   setPlanta(e.target.value);
-  // }
-  // const buscaDatos = async () => {
-  //   try {
-  //     let respuesta = await fetch(urlBuscar);
-  //     let resultado = await respuesta.json();
-  //     const busqueda = resultado.filter((element) =>{
-  //       return element.Nombre === planta;
-  //     })
-  //     if(planta === ""){
-  //     setPlanta(resultado)
-  //     return resultado;
-  //   } else{
-  //     setPlanta(busqueda)
-  //     return resultado;
-  //   }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-
-  // useEffect(() => {
-  // buscaDatos();
-  // }, [planta])
-
-
-  // const busquedaUsuario = (e)=>{
-  //   e.preventDefault();
-  //   const buscar = planta;
-  //   setPlanta(buscar);
-  //   setPlanta("");
-  // }
 
   // ----------------------------Funcion Añadir---------------------------------
 
@@ -182,6 +141,31 @@ function App() {
       recuperaDatos();
   };
   
+  //------------------------------------------Funcion Buscar 2.0------------------------------------------------------------------
+
+  const [filteredResults, setFilteredResults] = useState([]);
+   const [searchInput, setSearchInput] = useState('');
+
+    useEffect(() => {
+      recuperaDatos();
+    }, [])
+  
+  
+  const searchItems = (searchValue) => {
+  setSearchInput(searchValue)
+  if (searchInput !== '') {
+  const filteredData = newResultado.filter((item) => {
+  return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+  })
+  setFilteredResults(filteredData)
+  }
+  else{
+  setFilteredResults(newResultado)
+  }
+  }
+
+
+
 
   // Cada vez que se recarga la pagina se renderiza el componente y se leen los datos
   useEffect(() => {
@@ -196,6 +180,8 @@ function App() {
     console.log(e)
   }, []);
 
+
+  
   return ( 
     <div className = "App" >
       	<Router>
@@ -212,7 +198,29 @@ function App() {
 					</Switch>
 				</Router>              
         <Formulario añadirPlanta={añadirPlanta}/>
-        <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>  
+        <div className="juntar">
+        <form id="inicio">
+        <input type="text" name="busca" icon="search" id="busca" placeholder="Buscar por Nombre" onChange={(e)=>
+        searchItems(e.target.value)}className="form-control"/>
+        </form>
+        <div className="contenido">
+        {searchInput.length > 1 ? (
+        filteredResults.map((item)=>{
+          console.log(filteredResults)
+          return (
+            <Busqueda key={item._id} listaPlantas={item} recupera={newResultado} eliminar={eliminarPlanta} modificar={modificarPlanta}/>
+          )
+          })
+        ):(    
+            newResultado.map((e)=>{
+              return(
+                <Tarjetas key={e._id} listaPlantas={e} eliminar={eliminarPlanta} modificar={modificarPlanta} />
+              )
+            })
+          )}
+  </div>
+  </div>
+        {/* <MuestraDatos listaPlantas={newResultado} eliminarP={eliminarPlanta} modificarP={modificarPlanta}/>   */}
     </div>
   );
 }
