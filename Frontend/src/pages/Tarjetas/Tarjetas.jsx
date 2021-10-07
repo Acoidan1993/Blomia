@@ -157,9 +157,9 @@ return (
     <p><strong>Precio: </strong>{lista.Precio}</p>
   </div>
   <div key={lista._id} id="gestoredit">
-    {/* {error ? (<div className="divError">
+    {error ? (<div className="divError">
       <p className="mensajeError">Debe completar todos los campos</p>
-    </div>) : null} */}
+    </div>) : null}
     <div id="formularioedit">
       <button type="submit" id="editar" className="btn btn-warning" onClick={handleClickOpen2}>Editar Campos</button>
       <Dialog open={open2} onClose={handleClose2} aria-labelledby="alert-dialog-title" id="foredit"
