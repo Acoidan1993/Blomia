@@ -170,7 +170,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <form encType="multipart/form-data" className="form">
+          <form onSubmit={gestorEdit} key={lista._id} encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
             <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
             <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
@@ -183,13 +183,13 @@ return (
             <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
             <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
             </form>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
+            </DialogContentText>
+            </DialogContent>
+            <DialogActions>
               <Button onClick={handleClose2} id="botones">Cancelar</Button>
               <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
-            Editar
-          </Button>
+                Editar
+              </Button>
         </DialogActions>
       </Dialog>
     </div>
