@@ -76,7 +76,7 @@ return (
     const borrarPlanta = () => {
     eliminaP(item._id);
     };
-    
+
     // ----------------------------Gestor Editar---------------------------------
 
     const gestorEdit = (e) => {
@@ -106,7 +106,6 @@ return (
 
     setModifica("");
     };
-
 
 
     return (
