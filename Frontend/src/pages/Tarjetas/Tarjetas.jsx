@@ -93,7 +93,6 @@ function Tarjetas(props) {
   setActivo(false);
   setTipo("");
   setPrecio("");
-
   };
 
   const gestorFoto = (event) => {
@@ -187,7 +186,7 @@ return (
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose2} id="botones">Cancelar</Button>
-              <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
+              <Button onClick={handleClose2} type="submit" autoFocus id="botones">
                 Editar
               </Button>
         </DialogActions>
