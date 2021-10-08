@@ -159,7 +159,7 @@ return (
         <p><strong>Tipo: </strong>{lista.Tipo}</p>
         <p><strong>Precio: </strong>{lista.Precio}</p>
       </div>
-      <div key={lista._id} id="gestoredit">
+      <div id="gestoredit">
         {/* {error ? (<div className="divError">
           <p className="mensajeError">Debe completar todos los campos</p>
         </div>) : null} */}
@@ -172,7 +172,7 @@ return (
             </DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
-            <form onSubmit={gestorEdit} encType="multipart/form-data" className="form">
+            <form encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
             <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
             <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
@@ -184,16 +184,14 @@ return (
             {/* este input precio es de prueba--------------------------------------------------------------- */}
             <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
             <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
-            <button onClick={handleClose2} id="botones">Cancelar</button>
-            <button onClick={handleClose2} type="submit" autoFocus id="botones">Editar</button>
             </form>
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              {/* <Button onClick={handleClose2} id="botones">Cancelar</Button>
+              <Button onClick={handleClose2} id="botones">Cancelar</Button>
               <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
             Editar
-          </Button> */}
+          </Button>
         </DialogActions>
           </Dialog>
         </div>

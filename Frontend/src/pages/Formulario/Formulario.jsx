@@ -6,8 +6,8 @@ import "./Formulario.css";
 
 
  function Formulario(props) {
-
   const añadirPlanta = props.añadirPlanta;
+
   const [error, setError] = useState("");
 
 

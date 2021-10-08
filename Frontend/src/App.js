@@ -138,6 +138,7 @@ function App() {
     await fetch(`http://localhost:5000/plantas/modificar/${planta.Nombre}`, requestOptions)
       .then((response) => response.text())
       .catch((error) => console.log("error", error));
+
       recuperaDatos();
   };
   
@@ -206,7 +207,6 @@ function App() {
         <div className="contenido">
         {searchInput.length > 1 ? (
         filteredResults.map((item)=>{
-          console.log(filteredResults)
           return (
             <Busqueda key={item._id} listaPlantas={item} recupera={newResultado} eliminar={eliminarPlanta} modificar={modificarPlanta}/>
           )

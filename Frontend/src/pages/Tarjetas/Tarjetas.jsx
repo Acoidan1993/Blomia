@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 function Tarjetas(props) {
@@ -14,7 +14,6 @@ function Tarjetas(props) {
   const eliminar = props.eliminar;
   const modificar = props.modificar;
   
-  const [modifica, setModifica] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
@@ -73,14 +72,14 @@ function Tarjetas(props) {
   
   const modificaPlanta = {
   id: lista._id,
-  Foto:Foto,
-  Nombre:Nombre,
-  Referencia:Referencia,
-  Tamaño:Tamaño,
-  Stock:Stock,
-  Activo:Activo,
-  Tipo:Tipo,
-  Precio:Precio,
+  Foto: Foto,
+  Nombre: Nombre,
+  Referencia: Referencia,
+  Tamaño: Tamaño,
+  Stock: Stock,
+  Activo: Activo,
+  Tipo: Tipo,
+  Precio: Precio,
   }
   
   modificar(modificaPlanta);
@@ -156,7 +155,7 @@ return (
     <p><strong>Tipo: </strong>{lista.Tipo}</p>
     <p><strong>Precio: </strong>{lista.Precio}</p>
   </div>
-  <div key={lista._id} id="gestoredit">
+  <div id="gestoredit">
     {error ? (<div className="divError">
       <p className="mensajeError">Debe completar todos los campos</p>
     </div>) : null}
@@ -178,7 +177,6 @@ return (
             <input type="number" placeholder="Stock" onChage={gestorStock} value={Stock} className="form-control" />
             <label for="CheckBox">Marcar si la referencia esta Activa</label>
             <input type="checkbox" placeholder="Activo" id="checkbox" onChage={gestorActivo} value={Activo}/>
-            {/* este input precio es de prueba--------------------------------------------------------------- */}
             <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
             <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
             </form>

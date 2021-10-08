@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Router,Redirect,Link} from "react-router-dom";
+// import {Router,Redirect,Link} from "react-router-dom";
 // Para los formularios
 import { useForm } from 'react-hook-form';
 // Para las peticiones
@@ -17,7 +17,7 @@ const history = useHistory();
 // variable de estado que indica si el usuario existe o no en la base de datos.
 const[errorForm,setErrorForm] = useState("");
 // const [tieneAcceso, setTieneAcceso] = useState(false); 
-const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const { register, handleSubmit, formState: { errors } } = useForm();
  
   // hook del formulario para 'react-hook-form'
 	// Constante para los errores de la peticion
