@@ -5,7 +5,7 @@ const {
 } = require('express-validator');
 
 
-const controladorUsuarios = require('../controllers/controlador-usuarios');
+const controladorUsuarios = require('../controladores/ctrlUsuarios');
 
 const router = express.Router();
 

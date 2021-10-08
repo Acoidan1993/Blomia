@@ -1,11 +1,12 @@
-// controlador-usuarios.js
+// ctrlUsuarios.js
+
 const {
     validationResult
   } = require('express-validator');
   const bcrypt = require('bcryptjs');
   const jwt = require('jsonwebtoken');
   
-  const Usuario = require('../models/usuario');
+  const Usuario = require('../Modelos/usuario');
   
   const recuperarUsuarios = async (req, res, next) => {
     let usuarios;

@@ -1,3 +1,5 @@
+//ctrlPlantas
+
 const mongoose = require("mongoose");
 const Plantas = require("../Modelos/plantas");
 
@@ -150,6 +152,10 @@ const modificarPlanta = async (req, res, next) => {
 
  * - Modificar planta (revisar)
  */
+//añadir las fotos
+
+
+
 exports.agregarNuevaPlanta = agregarNuevaPlanta;
 exports.obtenerPlantas = obtenerPlantas;
 exports.obtenerPlantaPorNombre = obtenerPlantaPorNombre;

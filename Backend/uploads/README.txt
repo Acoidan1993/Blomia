@@ -1,0 +1,1 @@
+En esta carpeta es donde se suben las fotos te dejo el codigo
