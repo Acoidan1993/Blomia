@@ -7,7 +7,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-var project_routes = require('./Rutas/ruta_project');
+var ruta_project = require('./Rutas/ruta_project');
 
 /**  RUTAS **/
 const plantas = require("./Rutas/ruta_planta");
