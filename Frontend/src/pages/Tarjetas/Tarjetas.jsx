@@ -179,10 +179,8 @@ return (
             <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} Value={Activo}/>
             <input type="text" placeholder="Tipo" className="form-control" onChange={gestorTipo} Value={Tipo}/>
             <input type="number" placeholder="Precio" step="0.01" onChange={gestorPrecio} Value={Precio} className="form-control" />
-            <div>
-              <button onClick={handleClose2} className="btn btn-danger" id="botones">Cancelar</button>
-              <button onClick={handleClose2} type="submit" className="btn btn-warning" autoFocus id="botones">Editar</button>
-            </div>
+            <button onClick={handleClose2} className="btn btn-danger" id="botones">Cancelar</button>
+            <button onClick={handleClose2} type="submit" className="btn btn-warning" autoFocus id="botones">Editar</button>
             </form>
             </DialogContentText>
             </DialogContent>

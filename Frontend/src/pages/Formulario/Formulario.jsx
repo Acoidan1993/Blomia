@@ -80,10 +80,12 @@ import "./Formulario.css";
     setReferencia("");
     setTamaño("");
     setStock("");
-    setActivo(e.target = false);
+    setActivo("");
     setTipo("");
     setPrecio("");
 
+    e.target.checked = false
+    
     console.log(error)
   }
   
@@ -99,7 +101,7 @@ import "./Formulario.css";
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });;
+        });
   
   return (
     <div className="container-fluid">
