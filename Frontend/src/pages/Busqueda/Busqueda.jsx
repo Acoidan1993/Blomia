@@ -16,7 +16,6 @@ function Busqueda(props) {
   const eliminar = props.eliminar;
   const modificar = props.modificar;
   
-  const [modifica, setModifica] = useState("");
   const [error, setError] = useState("");
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);

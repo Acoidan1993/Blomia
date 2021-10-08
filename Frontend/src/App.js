@@ -208,7 +208,7 @@ function App() {
         {searchInput.length > 1 ? (
         filteredResults.map((item)=>{
           return (
-            <Busqueda key={item._id} listaPlantas={item} recupera={newResultado} eliminar={eliminarPlanta} modificar={modificarPlanta}/>
+            <Busqueda key={item._id} listaPlantas={item} eliminar={eliminarPlanta} modificar={modificarPlanta}/>
           )
           })
         ):(    
