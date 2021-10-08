@@ -73,14 +73,14 @@ function Tarjetas(props) {
   
   const modificaPlanta = {
   id: lista._id,
-  Foto: lista.Foto,
-  Nombre: lista.Nombre,
-  Referencia: lista.Referencia,
-  Tamaño: lista.Tamaño,
-  Stock: lista.Stock,
-  Activo: lista.Activo,
-  Tipo: lista.Tipo,
-  Precio: lista.Precio,
+  Foto:Foto,
+  Nombre:Nombre,
+  Referencia:Referencia,
+  Tamaño:Tamaño,
+  Stock:Stock,
+  Activo:Activo,
+  Tipo:Tipo,
+  Precio:Precio,
   }
   
   modificar(modificaPlanta);
@@ -169,7 +169,7 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <form onSubmit={gestorEdit} key={lista._id} encType="multipart/form-data" className="form">
+          <form key={lista._id} encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
             <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
             <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
@@ -186,7 +186,7 @@ return (
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose2} id="botones">Cancelar</Button>
-              <Button onClick={handleClose2} type="submit" autoFocus id="botones">
+              <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
                 Editar
               </Button>
         </DialogActions>

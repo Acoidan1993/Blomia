@@ -6,7 +6,6 @@ const cors = require("cors");
 
 app.use(cors());
 app.use(express.json());
-var app = express();
 
 var project_routes = require('./Rutas/ruta_project');
 
