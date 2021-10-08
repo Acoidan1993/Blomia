@@ -174,16 +174,15 @@ return (
               <DialogContentText id="alert-dialog-description">
             <form encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
-            <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
-            <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
-            <input type="text" placeholder="Referencia" onChage={gestorReferencia} value={Referencia} className="form-control" />
-            <input type="text" placeholder="Tamaño" onChage={gestorTamaño} value={Tamaño} className="form-control" />
-            <input type="number" placeholder="Stock" onChage={gestorStock} value={Stock} className="form-control" />
+            <input type="text" id="imageFile" accept="image/*" onChange={gestorFoto} value={Foto} className="form-control" />
+            <input type="text" placeholder="Nombre" onChange={gestorNombre} value={Nombre} className="form-control" />
+            <input type="text" placeholder="Referencia" onChange={gestorReferencia} value={Referencia} className="form-control" />
+            <input type="text" placeholder="Tamaño" onChange={gestorTamaño} value={Tamaño} className="form-control" />
+            <input type="number" placeholder="Stock" onChange={gestorStock} value={Stock} className="form-control" />
             <label for="CheckBox">Marcar si la referencia esta Activa</label>
-            <input type="checkbox" placeholder="Activo" id="checkbox" onChage={gestorActivo} value={Activo}/>
-            {/* este input precio es de prueba--------------------------------------------------------------- */}
-            <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
-            <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
+            <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} value={Activo}/>
+            <input type="text" placeholder="Tipo" className="form-control" onChange={gestorTipo} value={Tipo}/>
+            <input type="number" placeholder="Precio" step="0.01" onChange={gestorPrecio} value={Precio} className="form-control" />
             </form>
               </DialogContentText>
             </DialogContent>

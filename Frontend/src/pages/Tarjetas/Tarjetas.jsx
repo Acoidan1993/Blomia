@@ -23,7 +23,7 @@ function Tarjetas(props) {
   const [Referencia, setReferencia] = useState("");
   const [Tamaño, setTamaño] = useState("");
   const [Stock, setStock] = useState("");
-  const [Activo, setActivo] = useState(false);
+  const [Activo, setActivo] = useState("");
   const [Tipo, setTipo] = useState("");
   const [Precio, setPrecio] = useState("");
   
@@ -89,7 +89,7 @@ function Tarjetas(props) {
   setReferencia("");
   setTamaño("");
   setStock("");
-  setActivo(false);
+  setActivo("");
   setTipo("");
   setPrecio("");
   };
@@ -156,9 +156,9 @@ return (
     <p><strong>Precio: </strong>{lista.Precio}</p>
   </div>
   <div id="gestoredit">
-    {error ? (<div className="divError">
+    {/* {error ? (<div className="divError">
       <p className="mensajeError">Debe completar todos los campos</p>
-    </div>) : null}
+    </div>) : null} */}
     <div id="formularioedit">
       <button type="submit" id="editar" className="btn btn-warning" onClick={handleClickOpen2}>Editar Campos</button>
       <Dialog open={open2} onClose={handleClose2} aria-labelledby="alert-dialog-title" id="foredit"
@@ -168,25 +168,29 @@ return (
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-          <form key={lista._id} encType="multipart/form-data" className="form">
+          <form key={lista._id} onSubmit={gestorEdit} encType="multipart/form-data" className="form">
             <label for="File">Seleccione imagen de planta</label>
-            <input type="text" id="imageFile" accept="image/*" onChage={gestorFoto} value={Foto} className="form-control" />
-            <input type="text" placeholder="Nombre" onChage={gestorNombre} value={Nombre} className="form-control" />
-            <input type="text" placeholder="Referencia" onChage={gestorReferencia} value={Referencia} className="form-control" />
-            <input type="text" placeholder="Tamaño" onChage={gestorTamaño} value={Tamaño} className="form-control" />
-            <input type="number" placeholder="Stock" onChage={gestorStock} value={Stock} className="form-control" />
+            <input type="text" id="imageFile" accept="image/*" onChange={gestorFoto} Value={Foto} className="form-control" />
+            <input type="text" placeholder="Nombre" onChange={gestorNombre} Value={Nombre} className="form-control" />
+            <input type="text" placeholder="Referencia" onChange={gestorReferencia} Value={Referencia} className="form-control" />
+            <input type="text" placeholder="Tamaño" onChange={gestorTamaño} Value={Tamaño} className="form-control" />
+            <input type="number" placeholder="Stock" onChange={gestorStock} Value={Stock} className="form-control" />
             <label for="CheckBox">Marcar si la referencia esta Activa</label>
-            <input type="checkbox" placeholder="Activo" id="checkbox" onChage={gestorActivo} value={Activo}/>
-            <input type="text" placeholder="Tipo" className="form-control" onChage={gestorTipo} value={Tipo}/>
-            <input type="number" placeholder="Precio" step="0.01" onChage={gestorPrecio} value={Precio} className="form-control" />
+            <input type="checkbox" placeholder="Activo" id="checkbox" onChange={gestorActivo} Value={Activo}/>
+            <input type="text" placeholder="Tipo" className="form-control" onChange={gestorTipo} Value={Tipo}/>
+            <input type="number" placeholder="Precio" step="0.01" onChange={gestorPrecio} Value={Precio} className="form-control" />
+            <div>
+              <button onClick={handleClose2} id="botones">Cancelar</button>
+              <button onClick={handleClose2} type="submit" autoFocus id="botones">Editar</button>
+            </div>
             </form>
             </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose2} id="botones">Cancelar</Button>
+              {/* <Button onClick={handleClose2} id="botones">Cancelar</Button>
               <Button onClick={handleClose2, gestorEdit} type="submit" autoFocus id="botones">
                 Editar
-              </Button>
+              </Button> */}
         </DialogActions>
       </Dialog>
     </div>
